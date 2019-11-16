@@ -20,9 +20,9 @@ class Trainer {
             if (req.readyState === 4) {
                 let acquiredPokemon = JSON.parse(req.responseText)
                 let pokemonToAdd = new Pokemon(name)
-                pokemonToAdd.hp = acquiredPokemon.stats[0].base_stat
-                pokemonToAdd.attack = acquiredPokemon.stats[1].base_stat
-                pokemonToAdd.defense = acquiredPokemon.stats[2].base_stat
+                pokemonToAdd.hp = acquiredPokemon.stats[5].base_stat
+                pokemonToAdd.attack = acquiredPokemon.stats[4].base_stat
+                pokemonToAdd.defense = acquiredPokemon.stats[3].base_stat
                 for (let a in acquiredPokemon.abilities){
                     let ability = acquiredPokemon.abilities[a].ability.name
                     ability.replace('-', ' ').charAt(0).toUpperCase()
