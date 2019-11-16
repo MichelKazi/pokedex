@@ -51,7 +51,7 @@ class Trainer {
                 pokemonToAdd.defense = acquiredPokemon.stats[3].base_stat
                 for (let a in acquiredPokemon.abilities){
                     let ability = acquiredPokemon.abilities[a].ability.name
-                    ability.replace('-', ' ').charAt(0).toUpperCase()
+                    ability = ability.replace('-', ' ').charAt(0).toUpperCase()
                     pokemonToAdd.abilities.push(ability)
                 }
                 this.pokemonList.push(pokemonToAdd)
@@ -62,6 +62,9 @@ class Trainer {
         }
         req.open('GET', `https://fizal.me/pokeapi/api/v2/id/${id}.json`)
         req.send()
+    }
+    addPokemon(input) {
+        isNaN(input) ? this.addPokemonByName(input) : this.addPokemonByName(input)
     }
 
 }
