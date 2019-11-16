@@ -60,7 +60,7 @@ class Trainer {
             
             
         }
-        req.open('GET', `https://fizal.me/pokeapi/api/v2/name/${id}.json`)
+        req.open('GET', `https://fizal.me/pokeapi/api/v2/id/${id}.json`)
         req.send()
     }
 
