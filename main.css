@@ -1,0 +1,30 @@
+body{
+  margin: 0;
+  background-color: #021a0a;
+}
+
+.text-box {
+  display: block;
+  color: black;
+  background: white;
+  width: 300px;
+  padding: 20px;
+  margin: 30px auto;
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  position: relative;
+}
+  .text-box:before, .text-box:after{
+    content: '';
+    top: 0;
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    background: hsl(140, 35%, 25%);
+  }
+
+  .text-box:before
+    left: -10px
+
+  .text-box:after
+    right: -10px
