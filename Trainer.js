@@ -2,6 +2,8 @@ class Pokemon {
     constructor(name, stats) {
         this.name = name
         this.stats = stats
+        // since the pokemon is meant to be instantiated through Trainer's addPokemon method
+        // I have no need to add keys and instantiate them to overwrite them later
     }
 
 }
@@ -21,13 +23,15 @@ class Trainer {
                 const acquiredPokemon = JSON.parse(req.responseText)
                 const stats = {
                     weight : acquiredPokemon.weight,
-                    hp : acquiredPokemon.stats[5].base_stat,
-                    attack : acquiredPokemon.stats[4].base_stat,
-                    defense : acquiredPokemon.stats[3].base_stat,
+                    hp : acquiredPokemon.stats[5].base_stat, // For every single Pokemon JSON, 
+                    attack : acquiredPokemon.stats[4].base_stat, // these indices for stats will
+                    defense : acquiredPokemon.stats[3].base_stat, // always be the same 
                     abilities : acquiredPokemon.abilities.map( abilities => {
                         return abilities.ability.name.replace('-', ' ')
                     })    
-                }
+                }// stats is an object literal that is meant to be the second parameter for Pokemon class
+                // I can create new keys and values right in this object and assign information from the 
+                // JSON file to them
                 const pokemonToAdd = new Pokemon(acquiredPokemon.name, stats)
                 this.pokemonList.push(pokemonToAdd)
                 return true

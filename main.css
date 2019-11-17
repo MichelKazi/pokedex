@@ -1,15 +1,24 @@
 body{
   margin: 0;
-  background-color: #ddfdff;
+  background-color: #408080;
 }
 
-.dialogue-box {
+#dialogue-box {
   display: block;
   color: black;
-  width: 300px;
-  padding: 20px;
-  margin: 30px auto;
-  border-top: 10px solid black;
-  border-bottom: 10px solid black;
-  position: relative;
+  margin: 0 auto;
+  width: 708px;
+  bottom: 20%;
+  left: 24%;
+  position: absolute;
 }
+
+#dialogue-box p {
+    font-family: 'press start 2p', cursive;
+    top: 21%;
+    left: 10%;
+    font-size: 1.13em;
+    position: absolute;
+}
+
+
