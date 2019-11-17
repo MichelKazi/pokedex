@@ -15,20 +15,20 @@ class Trainer {
         this.name = name
         this.pokemonList = []
     }
+
     addPokemonByName(name) {
-        let req = new XMLHttpRequest()
+        const req = new XMLHttpRequest()
         req.onreadystatechange = _ => {
             if (req.readyState === 4) {
-                let acquiredPokemon = JSON.parse(req.responseText)
-                let pokemonToAdd = new Pokemon(name)
+                const acquiredPokemon = JSON.parse(req.responseText)
+                const pokemonToAdd = new Pokemon(name)
                 pokemonToAdd.weight = acquiredPokemon.weight
                 pokemonToAdd.hp = acquiredPokemon.stats[5].base_stat
                 pokemonToAdd.attack = acquiredPokemon.stats[4].base_stat
                 pokemonToAdd.defense = acquiredPokemon.stats[3].base_stat
-                for (let a in acquiredPokemon.abilities){
-                    let ability = acquiredPokemon.abilities[a].ability.name
-                    ability.replace('-', ' ').charAt(0).toUpperCase()
-                    pokemonToAdd.abilities.push(ability)
+                for (const a in acquiredPokemon.abilities){
+                    const ability = acquiredPokemon.abilities[a].ability.name
+                    pokemonToAdd.abilities.push(ability.replace('-', ' '))
                 }
                 this.pokemonList.push(pokemonToAdd)
                 return true
@@ -38,34 +38,36 @@ class Trainer {
         }
         req.open('GET', `https://fizal.me/pokeapi/api/v2/name/${name}.json`)
         req.send()
+        return this.pokemonList
     }
+
     addPokemonById(id) {
-        let req = new XMLHttpRequest()
+        const req = new XMLHttpRequest()
         req.onreadystatechange = _ => {
             if (req.readyState === 4) {
-                let acquiredPokemon = JSON.parse(req.responseText)
-                let pokemonToAdd = new Pokemon(acquiredPokemon.name)
+                const acquiredPokemon = JSON.parse(req.responseText)
+                const pokemonToAdd = new Pokemon(acquiredPokemon.name)
                 pokemonToAdd.weight = acquiredPokemon.weight
                 pokemonToAdd.hp = acquiredPokemon.stats[5].base_stat
                 pokemonToAdd.attack = acquiredPokemon.stats[4].base_stat
                 pokemonToAdd.defense = acquiredPokemon.stats[3].base_stat
-                for (let a in acquiredPokemon.abilities){
-                    let ability = acquiredPokemon.abilities[a].ability.name
-                    ability = ability.replace('-', ' ').charAt(0).toUpperCase()
-                    pokemonToAdd.abilities.push(ability)
+                for (const a in acquiredPokemon.abilities){
+                    const ability = acquiredPokemon.abilities[a].ability.name
+                    pokemonToAdd.abilities.push(ability.replace('-', ' '))
                 }
+               
                 this.pokemonList.push(pokemonToAdd)
                 return true
-            }
-            
-            
+            }  
         }
         req.open('GET', `https://fizal.me/pokeapi/api/v2/id/${id}.json`)
         req.send()
+        return this.pokemonList
     }
     addPokemon(input) {
-        isNaN(input) ? this.addPokemonByName(input) : this.addPokemonByName(input)
+        isNaN(input) ? this.addPokemonByName(input) : this.addPokemonById(input)
+        return this.pokemonList
     }
 
 }
-let michel = new Trainer('Michel')
+const michel = new Trainer('Michel')
