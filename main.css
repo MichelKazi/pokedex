@@ -3,6 +3,13 @@ body{
   background-color: #408080;
 }
 
+#oak {
+    height: 400px;
+    position: absolute;
+    top: 13.75%;
+    left: 32%;
+}
+
 #dialogue-box {
   display: block;
   color: black;
