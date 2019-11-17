@@ -28,11 +28,9 @@ class Trainer {
                 pokemonToAdd.hp = acquiredPokemon.stats[5].base_stat
                 pokemonToAdd.attack = acquiredPokemon.stats[4].base_stat
                 pokemonToAdd.defense = acquiredPokemon.stats[3].base_stat
-                for (const a in acquiredPokemon.abilities) {
-                    const ability = acquiredPokemon.abilities[a].ability.name
-                    pokemonToAdd.abilities.push(ability.replace('-', ' '))
-                }
-
+                pokemonToAdd.abilities = acquiredPokemon.abilities.map( abilities => {
+                    return abilities.ability.name.replace('-', ' ')
+                })
                 this.pokemonList.push(pokemonToAdd)
                 return true
             }
