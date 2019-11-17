@@ -15,7 +15,9 @@ class Trainer {
         this.name = name
         this.pokemonList = []
     }
-             
+    all () {
+        return this.pokemonList
+    }
     addPokemon(input) {
         const req = new XMLHttpRequest()
         req.onreadystatechange = _ => {
@@ -37,7 +39,7 @@ class Trainer {
         }
         isNaN(input) ? req.open('GET', `https://fizal.me/pokeapi/api/v2/name/${input}.json`) : req.open('GET', `https://fizal.me/pokeapi/api/v2/id/${input}.json`)
         req.send()
-        return this.pokemonList
+        return isNaN(input) ? `${input} was added to ${this.name}'s list of pokemon!` : `Pokemon with ID: ${input} was added to ${this.name}'s list of pokemon!`
     }
 
 }
