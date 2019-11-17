@@ -33,6 +33,7 @@ class Trainer {
                 // I can create new keys and values right in this object and assign information from the 
                 // JSON file to them
                 const pokemonToAdd = new Pokemon(acquiredPokemon.name, stats)
+                pokemonToAdd.spriteURL = acquiredPokemon.sprites.front_default
                 this.pokemonList.push(pokemonToAdd)
                 return true
             }
