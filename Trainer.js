@@ -1,11 +1,7 @@
 class Pokemon {
-    constructor(name) {
+    constructor(name, stats) {
         this.name = name
-        this.weight = 0
-        this.hp = 0
-        this.attack = 0
-        this.defense = 0
-        this.abilities = []
+        this.stats = stats
     }
 
 }
@@ -23,14 +19,16 @@ class Trainer {
         req.onreadystatechange = _ => {
             if (req.readyState === 4) {
                 const acquiredPokemon = JSON.parse(req.responseText)
-                const pokemonToAdd = new Pokemon(acquiredPokemon.name)
-                pokemonToAdd.weight = acquiredPokemon.weight
-                pokemonToAdd.hp = acquiredPokemon.stats[5].base_stat
-                pokemonToAdd.attack = acquiredPokemon.stats[4].base_stat
-                pokemonToAdd.defense = acquiredPokemon.stats[3].base_stat
-                pokemonToAdd.abilities = acquiredPokemon.abilities.map( abilities => {
-                    return abilities.ability.name.replace('-', ' ')
-                })
+                const stats = {
+                    weight : acquiredPokemon.weight,
+                    hp : acquiredPokemon.stats[5].base_stat,
+                    attack : acquiredPokemon.stats[4].base_stat,
+                    defense : acquiredPokemon.stats[3].base_stat,
+                    abilities : acquiredPokemon.abilities.map( abilities => {
+                        return abilities.ability.name.replace('-', ' ')
+                    })    
+                }
+                const pokemonToAdd = new Pokemon(acquiredPokemon.name, stats)
                 this.pokemonList.push(pokemonToAdd)
                 return true
             }
