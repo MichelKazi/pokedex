@@ -1,6 +1,6 @@
 body{
   margin: 0;
-  background-color: #408080;
+  background-color: hsl(180, 37%, 19%);
 }
 
 #dialogue-container {
@@ -31,7 +31,7 @@ body{
 
 #dialogue-box p {
     font-family: 'press start 2p', cursive;
-    animation: typing 2s steps(35, end);  
+    animation: typing 2s steps(35, end);
     white-space: nowrap;
     overflow: hidden;
     top: 21%;

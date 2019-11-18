@@ -19,7 +19,7 @@ class Trainer {
     addPokemon(input) {
         const req = new XMLHttpRequest()
         req.onreadystatechange = _ => {
-            if (req.readyState === 4) {
+            if (req.readyState === 4 && req.status === 200) {
                 const acquiredPokemon = JSON.parse(req.responseText)
                 const stats = {
                     weight : acquiredPokemon.weight,
@@ -35,8 +35,7 @@ class Trainer {
                 const pokemonToAdd = new Pokemon(acquiredPokemon.name, stats)
                 pokemonToAdd.spriteURL = acquiredPokemon.sprites.front_default
                 this.pokemonList.push(pokemonToAdd)
-                return true
-            }
+            } else if (req.status === 404) console.log(`${input} was not a valid entry!`) 
         }
         isNaN(input) ? req.open('GET', `https://fizal.me/pokeapi/api/v2/name/${input}.json`) : req.open('GET', `https://fizal.me/pokeapi/api/v2/id/${input}.json`)
         req.send()
@@ -44,4 +43,6 @@ class Trainer {
     }
 
 }
-const michel = new Trainer('Michel')
+
+    let michel = new Trainer('Michel')
+
