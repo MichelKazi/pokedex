@@ -4,12 +4,12 @@ import './App.css';
 import Trainer from './Trainer';
 
 class App extends Component {
+  componentDidMount(){
+    window.trainer = new Trainer('michel')
+  }
 
   render() {
 
-    this.componentDidMount(){
-      window.trainer = new Trainer('michel')
-    }
 
    return (
      <div id="dialogue-container">
