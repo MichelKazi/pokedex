@@ -2,10 +2,7 @@ class Pokemon {
     constructor(name, stats) {
         this.name = name
         this.stats = stats
-        // since the pokemon is meant to be instantiated through Trainer's addPokemon method
-        // I have no need to add keys and instantiate them to overwrite them later
     }
-
 }
 
 class Trainer {
@@ -54,7 +51,5 @@ class Trainer {
                 console.log(`${input} was not a valid entry!`)
             })
     }
-
 }
-
 export default Trainer
