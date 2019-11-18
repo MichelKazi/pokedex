@@ -44,5 +44,3 @@ class Trainer {
 
 }
 
-    let michel = new Trainer('Michel')
-
