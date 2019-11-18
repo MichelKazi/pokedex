@@ -47,12 +47,10 @@ class Trainer {
         // Make a request for a user with a given ID
         return axios.get(`https://fizal.me/pokeapi/api/v2/${isNaN(input)?'name/':'id/'}${input}.json`)
             .then(function (response) {
-                // handle success
                 console.log(response);
                 return response.data
             })
             .catch(function (error) {
-                // handle error
                 console.log(`${input} was not a valid entry!`)
             })
     }
