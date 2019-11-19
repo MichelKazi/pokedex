@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/TD-React-Challenge-Test-1/static/css/main.b6798f4c.chunk.css",
-    "main.js": "/TD-React-Challenge-Test-1/static/js/main.5459faf8.chunk.js",
-    "main.js.map": "/TD-React-Challenge-Test-1/static/js/main.5459faf8.chunk.js.map",
-    "runtime-main.js": "/TD-React-Challenge-Test-1/static/js/runtime-main.aa2e2c54.js",
-    "runtime-main.js.map": "/TD-React-Challenge-Test-1/static/js/runtime-main.aa2e2c54.js.map",
-    "static/js/2.21252012.chunk.js": "/TD-React-Challenge-Test-1/static/js/2.21252012.chunk.js",
-    "static/js/2.21252012.chunk.js.map": "/TD-React-Challenge-Test-1/static/js/2.21252012.chunk.js.map",
-    "index.html": "/TD-React-Challenge-Test-1/index.html",
-    "precache-manifest.df40373a0bfc7db9199c4a81b994d8cf.js": "/TD-React-Challenge-Test-1/precache-manifest.df40373a0bfc7db9199c4a81b994d8cf.js",
-    "service-worker.js": "/TD-React-Challenge-Test-1/service-worker.js",
-    "static/css/main.b6798f4c.chunk.css.map": "/TD-React-Challenge-Test-1/static/css/main.b6798f4c.chunk.css.map",
-    "static/media/logo.svg": "/TD-React-Challenge-Test-1/static/media/logo.25bf045c.svg"
+    "main.css": "/pokedex/static/css/main.b6798f4c.chunk.css",
+    "main.js": "/pokedex/static/js/main.ffc4a06d.chunk.js",
+    "main.js.map": "/pokedex/static/js/main.ffc4a06d.chunk.js.map",
+    "runtime-main.js": "/pokedex/static/js/runtime-main.0647a4aa.js",
+    "runtime-main.js.map": "/pokedex/static/js/runtime-main.0647a4aa.js.map",
+    "static/js/2.21252012.chunk.js": "/pokedex/static/js/2.21252012.chunk.js",
+    "static/js/2.21252012.chunk.js.map": "/pokedex/static/js/2.21252012.chunk.js.map",
+    "index.html": "/pokedex/index.html",
+    "precache-manifest.b977745a2896b3da39227cfd50bd5831.js": "/pokedex/precache-manifest.b977745a2896b3da39227cfd50bd5831.js",
+    "service-worker.js": "/pokedex/service-worker.js",
+    "static/css/main.b6798f4c.chunk.css.map": "/pokedex/static/css/main.b6798f4c.chunk.css.map",
+    "static/media/logo.svg": "/pokedex/static/media/logo.25bf045c.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.aa2e2c54.js",
+    "static/js/runtime-main.0647a4aa.js",
     "static/js/2.21252012.chunk.js",
     "static/css/main.b6798f4c.chunk.css",
-    "static/js/main.5459faf8.chunk.js"
+    "static/js/main.ffc4a06d.chunk.js"
   ]
 }
