@@ -34,22 +34,41 @@ class Trainer {
             const pokemonToAdd = new Pokemon(acquiredPokemon.name, stats)
             pokemonToAdd.spriteURL = acquiredPokemon.sprites.front_default
             this.pokemonList.push(pokemonToAdd)
-            return isNaN(input) ? console.log(`${input} was added to ${this.name}'s list of pokemon!`) : console.log(`Pokemon with ID: ${input} was added to ${this.name}'s list of pokemon!`)
+            return console.log(`${pokemonToAdd.name} was added to ${this.name}'s team!`);  
         })
 
     }
 
-    fetchPokeAPI(input) {
-        const axios = require('axios');
-        // Make a request for a user with a given ID
-        return axios.get(`https://fizal.me/pokeapi/api/v2/${isNaN(input)?'name/':'id/'}${input}.json`)
-            .then(function (response) {
-                console.log(response);
-                return response.data
-            })
-            .catch(function (error) {
-                console.log(`${input} was not a valid entry!`)
-            })
+    removePokemon(input) {
+        
     }
+
+    // fetchPokeAPI(input) {
+    //     const axios = require('axios');
+    //     // Make a request for a user with a given ID
+    //     return axios.get(`https://fizal.me/pokeapi/api/v2/${isNaN(input)?'name/':'id/'}${input}.json`)
+    //         .then( (response) =>  {
+    //             console.log(response);
+    //             return response.data
+    //         })
+    //         .catch(function (error) {
+    //             console.error(`${input} was not a valid entry!`)
+
+    //         })
+    // }
+
+    fetchPokeAPI = async (input) => {
+        const axios = require('axios')
+        let response
+
+        try {
+            response = await axios.get(`https://fizal.me/pokeapi/api/v2/${isNaN(input) ? 'name/' : 'id/'}${input}.json`)
+            return response.data
+        }
+        catch (err) {
+            console.error(`${input} was not a valid entry!`)
+        }
+    }
+
 }
 export default Trainer
