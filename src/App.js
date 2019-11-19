@@ -31,7 +31,11 @@ class App extends Component {
   }
 
   makeTrainer(name){
-    this.setState({trainer: new Trainer(name)})
+    this.setState({
+      dialogueIndex: this.state.dialogueIndex + 1,
+      trainer: new Trainer(name)
+    })
+    window.trainer = new Trainer(name)
   }
  
   render() {
@@ -39,7 +43,7 @@ class App extends Component {
    return (
      <div id="dialogue-container">
        <img id="oak" src="https://www.spriters-resource.com/resources/sheet_icons/4/3701.png" alt=""></img>
-       <Dialogue dialogueIndex={this.state.dialogueIndex} onClick={this.acknowledge} />
+       <Dialogue dialogueIndex={this.state.dialogueIndex} onClick={this.acknowledge} onSubmit={this.makeTrainer}/>
      </div>
      
    );

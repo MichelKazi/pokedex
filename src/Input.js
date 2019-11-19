@@ -11,7 +11,7 @@ export class Input extends Component {
         return (
             <>
                 <input id='name-box' onChange={(e) => this.setState({name: e.target.value })} />
-                <button onSubmit={() => this.props.onSubmit(this.state.name)}> </button>
+                <button id = "submit-btn" onClick={() => this.props.onSubmit(this.state.name)}>Enter</button>
             </>
         )
     }
