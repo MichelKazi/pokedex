@@ -10,11 +10,13 @@ class App extends Component {
     this.state = {
       trainer: null,
       acknowledged : false,
-      dialogueIndex: 0
+      dialogueIndex: 0,
+      typing: false
     }
 
     //bind this
     this.acknowledge = this.acknowledge.bind(this)
+    this.makeTrainer = this.makeTrainer.bind(this)
   }
   componentDidMount() {
     window.trainer = new Trainer('')
@@ -23,17 +25,21 @@ class App extends Component {
   acknowledge() {
     this.setState({
       acknowledged: true, 
-      dialogueIndex: this.state.dialogueIndex+1
-      
+      dialogueIndex: this.state.dialogueIndex+1,
+      typing: true
     })
   }
 
+  makeTrainer(name){
+    this.setState({trainer: new Trainer(name)})
+  }
+ 
   render() {
     console.log('app.js state', this.state)
    return (
      <div id="dialogue-container">
        <img id="oak" src="https://www.spriters-resource.com/resources/sheet_icons/4/3701.png" alt=""></img>
-       <Dialogue dialogueIndex={this.state.dialogueIndex} onClick={this.acknowledge}/>
+       <Dialogue dialogueIndex={this.state.dialogueIndex} onClick={this.acknowledge} />
      </div>
      
    );
