@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Trainer from './Trainer';
-import Dialogue from './Dialogue'
+import Dialogue from './components/Dialogue'
+import Map from './Map'
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +43,9 @@ class App extends Component {
     console.log('app.js state', this.state)
    return (
      <div id="dialogue-container">
+       
        <img id="oak" src="https://www.spriters-resource.com/resources/sheet_icons/4/3701.png" alt=""></img>
+       <Map />
        <Dialogue dialogueIndex={this.state.dialogueIndex} onClick={this.acknowledge} onSubmit={this.makeTrainer}/>
      </div>
      
