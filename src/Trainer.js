@@ -1,10 +1,14 @@
+const axios = require('axios')
 class Pokemon {
     constructor(name=null, stats=null) {
         this.name = name
         this.stats = stats
     }
 
-    //This method 
+    //This method is for generating random pokemon
+    fetchIfNull(id){
+        axios.get('https://fizal.me/pokeapi/api/v2/id/${id}.json')
+    }
 
 }
 
@@ -47,7 +51,6 @@ class Trainer {
     }
 
     fetchPokeAPI = async (input) => {
-        const axios = require('axios')
         let response
 
         try {
