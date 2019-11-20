@@ -25,7 +25,7 @@ export class Dialogue extends Component {
 
 
 
-const messages = ['Welcome to the World of POKéMON!', 'My name jeff', `What your name is cuh`, 'this is a dialogue too.']
+const messages = ['Welcome to the World of POKéMON!', 'My name jeff', `What your name is cuh`, 'Alright thats all I need']
 
 
 

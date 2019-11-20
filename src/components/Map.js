@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import PokeballMarker from './PokeballMarker';
+import PokemonCard from './PokemonCard';
 
 export class Map extends Component {
 
@@ -8,14 +9,26 @@ export class Map extends Component {
         super(props)
         this.state = {
         viewport: {
-            width: 700,
+            width: "70%",
             height: 700,
             latitude: 40.704200,
             longitude: -74.011020,
             zoom: 12
-        }
+        },
+        labelShowing : false,
+        renderedPokemon : null
     };
+    this.showLabel=this.showLabel.bind(this)
+    this.hideLabel=this.hideLabel.bind(this)
 }
+    showLabel() {
+        this.setState({labelShowing: true})
+    }
+
+    hideLabel() {
+        this.setState({labelShowing: false})
+    }
+
     render() {
         return (
             <ReactMapGL className ="map"
@@ -23,15 +36,12 @@ export class Map extends Component {
                 {...this.state.viewport}
                 onViewportChange={(viewport) => this.setState({ viewport })}
             >
-                <Marker latitude={40.715326} longitude={-73.992354} offsetLeft={-20} offsetTop={-10}> 
-                    <PokeballMarker />
+                {this.state.labelShowing && <PokemonCard onClick={this.hideLabel}></PokemonCard>}
+                
+                <Marker captureClick={false} latitude={40.715326} longitude={-73.992354} offsetLeft={-20} offsetTop={-10}> 
+                    <PokeballMarker onClick={this.showLabel}/>
                 </Marker>
-                <Marker latitude={40.702639} longitude={-73.984791} offsetLeft={-20} offsetTop={-10}> 
-                    <PokeballMarker />
-                </Marker>
-                <Marker latitude={40.714936} longitude={-74.003351} offsetLeft={-20} offsetTop={-10}> 
-                    <PokeballMarker />
-                </Marker>
+                
             </ReactMapGL>
         );
     }

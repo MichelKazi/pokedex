@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Trainer from './Trainer';
 import Dialogue from './components/Dialogue'
-import Map from './Map'
+import Map from './components/Map'
 
 class App extends Component {
   constructor(props) {
@@ -44,9 +44,9 @@ class App extends Component {
    return (
      <div id="dialogue-container">
        
-       <img id="oak" src="https://www.spriters-resource.com/resources/sheet_icons/4/3701.png" alt=""></img>
-       <Map />
-       <Dialogue dialogueIndex={this.state.dialogueIndex} onClick={this.acknowledge} onSubmit={this.makeTrainer}/>
+       {/* <img id="oak" src="https://www.spriters-resource.com/resources/sheet_icons/4/3701.png" alt=""></img> */}
+       <Map style={{margin: '0 auto', display: 'block'}}/>
+       {/* <Dialogue dialogueIndex={this.state.dialogueIndex} onClick={this.acknowledge} onSubmit={this.makeTrainer}/> */}
      </div>
      
    );

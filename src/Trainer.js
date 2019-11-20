@@ -1,8 +1,11 @@
 class Pokemon {
-    constructor(name, stats) {
+    constructor(name=null, stats=null) {
         this.name = name
         this.stats = stats
     }
+
+    //This method 
+
 }
 
 class Trainer {
@@ -43,31 +46,20 @@ class Trainer {
         
     }
 
-    // fetchPokeAPI(input) {
-    //     const axios = require('axios');
-    //     // Make a request for a user with a given ID
-    //     return axios.get(`https://fizal.me/pokeapi/api/v2/${isNaN(input)?'name/':'id/'}${input}.json`)
-    //         .then( (response) =>  {
-    //             console.log(response);
-    //             return response.data
-    //         })
-    //         .catch(function (error) {
-    //             console.error(`${input} was not a valid entry!`)
-
-    //         })
-    // }
-
     fetchPokeAPI = async (input) => {
         const axios = require('axios')
         let response
 
         try {
             response = await axios.get(`https://fizal.me/pokeapi/api/v2/${isNaN(input) ? 'name/' : 'id/'}${input}.json`)
-            return response.data
+            response = response.data
+            return response
         }
         catch (err) {
             console.error(`${input} was not a valid entry!`)
         }
+        
+        
     }
 
 }

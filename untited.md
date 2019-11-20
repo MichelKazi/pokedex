@@ -17,4 +17,8 @@ You can then add that pokemon to your Trainer's team, but you only have a limit 
 Randomize pokemon:
     initialize 50-100 pokemon in initial map location
     use math.random within a range
-    Math.floor(Math.random() * however many there are) + 1 //to pass as an ID for the randomly generated pokemon    
+    Math.floor(Math.random() * however many there are) + 1 //to pass as an ID for the randomly generated pokemon  
+
+The locations for each marker uses longitude and latitude so if I specify a range I can throw pokeballs all around a user's given radius  
+
+I'm using map box, I have the map rendered, I need to make the markers I rendered clickable, and allow them to display pokemon information based on whatever is inside
