@@ -18,12 +18,18 @@ export class Map extends Component {
 }
     render() {
         return (
-            <ReactMapGL
+            <ReactMapGL className ="map"
                 mapboxApiAccessToken={'pk.eyJ1IjoibWthemkiLCJhIjoiY2szNm42Y214MDM5djNjcnozcmFseGplaiJ9.romUGZKRAwbaprnN_LrRiw'}
                 {...this.state.viewport}
                 onViewportChange={(viewport) => this.setState({ viewport })}
             >
                 <Marker latitude={40.715326} longitude={-73.992354} offsetLeft={-20} offsetTop={-10}> 
+                    <PokeballMarker />
+                </Marker>
+                <Marker latitude={40.702639} longitude={-73.984791} offsetLeft={-20} offsetTop={-10}> 
+                    <PokeballMarker />
+                </Marker>
+                <Marker latitude={40.714936} longitude={-74.003351} offsetLeft={-20} offsetTop={-10}> 
                     <PokeballMarker />
                 </Marker>
             </ReactMapGL>
