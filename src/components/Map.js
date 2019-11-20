@@ -18,16 +18,26 @@ export class Map extends Component {
         labelShowing : false,
         renderedPokemon : null
     };
+
+    //binding this
     this.showLabel=this.showLabel.bind(this)
     this.hideLabel=this.hideLabel.bind(this)
+    this.genPokemon=this.genPokemon.bind(this)
 }
     showLabel() {
-        this.setState({labelShowing: true})
+        this.setState({
+            labelShowing: true,
+        })
+    }
+
+    genPokemon() {
+        
     }
 
     hideLabel() {
         this.setState({labelShowing: false})
     }
+
 
     render() {
         return (
