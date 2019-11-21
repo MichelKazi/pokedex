@@ -18,7 +18,7 @@ export class Map extends Component {
       },
       labelShowing: false,
       navigatorChecked: false,
-
+      pokemon: null
     };
     //binding the this keyword
     this.showLabel = this.showLabel.bind(this)
@@ -71,12 +71,9 @@ export class Map extends Component {
     })
   }
 
-
   hideLabel() {
     this.setState({ labelShowing: false })
   }
-
-
 
   render() {
     return (
@@ -86,10 +83,10 @@ export class Map extends Component {
           {...this.state.viewport}
           onViewportChange={(viewport) => this.setState({ viewport })}
         >
-          {this.state.labelShowing && <PokemonCard style={{ zIndex: 1 }} onClick={this.hideLabel}></PokemonCard>}
+          {this.state.pokemon && <PokemonCard pokemon={this.state.pokemon} style={{ zIndex: 1 }} onClick={this.hideLabel}></PokemonCard>}
           {this.state.navigatorChecked && this.state.locations && this.state.locations.map(({ lat, lng }) => (
             <Marker latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
-              <PokeballMarker onClick={this.showLabel} />
+              <PokeballMarker pokemonHandler={this.pokemonHandler} />
             </Marker>
           ))}
 
