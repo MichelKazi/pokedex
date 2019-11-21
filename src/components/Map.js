@@ -24,6 +24,7 @@ export class Map extends Component {
     this.showLabel = this.showLabel.bind(this)
     this.hideLabel = this.hideLabel.bind(this)
     this.locate = this.locate.bind(this)
+    this.pokemonHandler = this.pokemonHandler.bind(this)
   }
 
   componentDidMount() {
@@ -60,9 +61,9 @@ export class Map extends Component {
     }
   }
 
-  setPokemon(pokemon){
+  pokemonHandler(pokemon){
     this.setState({ pokemon })
-  }
+  }  //handler recieves pokemon from clicked pokeball
 
   showLabel() {
     this.setState({
