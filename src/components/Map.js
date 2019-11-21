@@ -77,23 +77,18 @@ export class Map extends Component {
     render() {
         return (
           <div>
-          {this.state.labelShowing && <PokemonCard style={{zIndex: 1}} onClick={this.hideLabel}></PokemonCard>}
             <ReactMapGL className ="map"
                 mapboxApiAccessToken={'pk.eyJ1IjoibWthemkiLCJhIjoiY2szNm42Y214MDM5djNjcnozcmFseGplaiJ9.romUGZKRAwbaprnN_LrRiw'}
                 {...this.state.viewport}
                 onViewportChange={(viewport) => this.setState({ viewport })}
-            >
+                >
+                {this.state.labelShowing && <PokemonCard style={{zIndex: 1}} onClick={this.hideLabel}></PokemonCard>}
                 {this.state.navigatorChecked && this.state.locations && this.state.locations.map(({ lat, lng }) => (
                     <Marker latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
                         <PokeballMarker onClick={this.showLabel} />
                     </Marker>
                 ))}
-                {/* <Marker style={{ zIndex: -1 }} captureClick={false} 
-                    latitude={this.state.viewport.latitude + (Math.random() - .5) / 25} 
-                    longitude={this.state.viewport.longitude + (Math.random() - .5) / 25} 
-                offsetLeft={-20} offsetTop={-10}> 
-                    <PokeballMarker onClick={this.showLabel}/>
-                </Marker> */}
+                
                 
             </ReactMapGL>
           </div>
