@@ -17,7 +17,8 @@ export class Map extends Component {
             zoom: 14
         },
         labelShowing : false,
-        navigatorChecked: false
+        navigatorChecked: false,
+        
     };
     //binding the this keyword
     this.showLabel=this.showLabel.bind(this)
@@ -27,20 +28,17 @@ export class Map extends Component {
 
     componentDidMount(){
         this.locate()
-        
       }
       
       componentDidUpdate(prevProps, prevState) {
         if (prevState.navigatorChecked !== this.state.navigatorChecked) {
-          this.locate(_=>{
-            const locations = Array(50).fill(0)
-                .map(() => ({
-                    lat: this.state.viewport.latitude + ((Math.random() - 0.5) / 15),
-                    lng: this.state.viewport.longitude + ((Math.random() - 0.5) / 15),
-                }));
-      
-            this.setState({ locations })
-        })
+          const locations = Array(50).fill(0)
+              .map(() => ({
+                  lat: this.state.viewport.latitude + ((Math.random() - 0.5) / 15),
+                  lng: this.state.viewport.longitude + ((Math.random() - 0.5) / 15),
+              }));
+    
+          this.setState({ locations })
       }
    }
 
@@ -85,7 +83,7 @@ export class Map extends Component {
                 onViewportChange={(viewport) => this.setState({ viewport })}
             >
                 {this.state.labelShowing && <PokemonCard style={{zIndex: 1}} onClick={this.hideLabel}></PokemonCard>}
-                {this.state.navigatorChecked && this.state.locations.map(({ lat, lng }) => (
+                {this.state.navigatorChecked && this.state.locations && this.state.locations.map(({ lat, lng }) => (
                     <Marker latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
                         <PokeballMarker onClick={this.showLabel} />
                     </Marker>
