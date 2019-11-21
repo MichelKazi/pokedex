@@ -14,7 +14,7 @@ export class Map extends Component {
             height: 700,
             latitude: 40.704200,
             longitude: -74.011020,
-            zoom: 12
+            zoom: 14
         },
         labelShowing : false
     };
@@ -30,15 +30,17 @@ export class Map extends Component {
     }
 
     locate() {
-        navigator.geolocation.getCurrentPosition(position => {
+        navigator.geolocation.getCurrentPosition(userLocation => {
             this.setState({
                 viewport: {
                     width: "70%",
                     height: 700,
-                    longitude: position.coords.longitude,
-                    latitude: position.coords.latitude,
-                    zoom: 12
-                }})
+                    longitude: userLocation.coords.longitude,
+                    latitude: userLocation.coords.latitude,
+                    zoom: 13
+                },
+                
+            })
         })
 
     }
@@ -64,7 +66,7 @@ export class Map extends Component {
             >
                 {this.state.labelShowing && <PokemonCard style={{zIndex: 1}} onClick={this.hideLabel}></PokemonCard>}
                 
-                <Marker style={{zIndex: -1}} captureClick={false} latitude={40.715326} longitude={-73.992354} offsetLeft={-20} offsetTop={-10}> 
+                <Marker style={{ zIndex: -1 }} captureClick={false} latitude={this.state.viewport.latitude + (Math.random() - .5) / 25} longitude={this.state.viewport.longitude + (Math.random() - .5) / 25} offsetLeft={-20} offsetTop={-10}> 
                     <PokeballMarker onClick={this.showLabel}/>
                 </Marker>
                 

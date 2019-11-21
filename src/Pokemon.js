@@ -8,7 +8,7 @@ export class Pokemon {
 
     randomQuery() {
         return this.queryData(Math.floor(Math.random() * 800) + 1)
-    }
+    } // This method is meant for the map to randomize pokemon throughout the 
 
     queryData = async (id) => {
         let response
