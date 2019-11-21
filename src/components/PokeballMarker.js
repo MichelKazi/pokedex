@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 
 export class PokeballMarker extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            
-        }
-    }
+   
     render() {
         return (
             <div onClick={this.props.onClick} style={{ cursor: 'pointer' }}>

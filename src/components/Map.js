@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import PokeballMarker from './PokeballMarker';
 import PokemonCard from './PokemonCard';
-import Pokemon from '../Pokemon'
+
 
 export class Map extends Component {
 
@@ -16,9 +16,9 @@ export class Map extends Component {
             longitude: -74.011020,
             zoom: 14
         },
-        labelShowing : false
+        labelShowing : false,
+        navigatorChecked: false
     };
-
     //binding the this keyword
     this.showLabel=this.showLabel.bind(this)
     this.hideLabel=this.hideLabel.bind(this)
@@ -27,21 +27,41 @@ export class Map extends Component {
 
     componentDidMount(){
         this.locate()
-    }
-
-    locate() {
-        navigator.geolocation.getCurrentPosition(userLocation => {
-            this.setState({
-                viewport: {
-                    width: "70%",
-                    height: 700,
-                    longitude: userLocation.coords.longitude,
-                    latitude: userLocation.coords.latitude,
-                    zoom: 13
-                },
-                
-            })
+        
+      }
+      
+      componentDidUpdate(prevProps, prevState) {
+        if (prevState.navigatorChecked !== this.state.navigatorChecked) {
+          this.locate(_=>{
+            const locations = Array(50).fill(0)
+                .map(() => ({
+                    lat: this.state.viewport.latitude + ((Math.random() - 0.5) / 15),
+                    lng: this.state.viewport.longitude + ((Math.random() - 0.5) / 15),
+                }));
+      
+            this.setState({ locations })
         })
+      }
+   }
+
+    locate(cb = _ => {}) {
+        if (!navigator) {
+            this.setState({ navigatorChecked: true }, cb())
+        } else {
+            navigator.geolocation.getCurrentPosition(userLocation => {
+                this.setState({
+                    navigatorChecked: true,
+                    viewport: {
+                      width: "70%",
+                      height: 700,
+                      longitude: userLocation.coords.longitude,
+                      latitude: userLocation.coords.latitude,
+                      zoom: 13
+                    },
+                }, cb())
+            })
+        }
+      
 
     }
 
@@ -65,10 +85,17 @@ export class Map extends Component {
                 onViewportChange={(viewport) => this.setState({ viewport })}
             >
                 {this.state.labelShowing && <PokemonCard style={{zIndex: 1}} onClick={this.hideLabel}></PokemonCard>}
-                
-                <Marker style={{ zIndex: -1 }} captureClick={false} latitude={this.state.viewport.latitude + (Math.random() - .5) / 25} longitude={this.state.viewport.longitude + (Math.random() - .5) / 25} offsetLeft={-20} offsetTop={-10}> 
+                {this.state.navigatorChecked && this.state.locations.map(({ lat, lng }) => (
+                    <Marker latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
+                        <PokeballMarker onClick={this.showLabel} />
+                    </Marker>
+                ))}
+                {/* <Marker style={{ zIndex: -1 }} captureClick={false} 
+                    latitude={this.state.viewport.latitude + (Math.random() - .5) / 25} 
+                    longitude={this.state.viewport.longitude + (Math.random() - .5) / 25} 
+                offsetLeft={-20} offsetTop={-10}> 
                     <PokeballMarker onClick={this.showLabel}/>
-                </Marker>
+                </Marker> */}
                 
             </ReactMapGL>
         );
