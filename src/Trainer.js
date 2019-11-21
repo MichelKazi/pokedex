@@ -1,24 +1,7 @@
+import Pokemon from './Pokemon'
 const axios = require('axios')
-class Pokemon {
-    constructor(name=null, stats=null) {
-        this.name = name
-        this.stats = stats
-    }
 
-    //This method is for generating random pokemon
-    fetchIfNull(id){
-        axios.get('https://fizal.me/pokeapi/api/v2/id/${id}.json')
-        .then((response)=> {
-            const acquired = response.data
-            console.log(response);
-            return acquired
-        })
-        
-    }
-
-}
-
-class Trainer {
+export class Trainer {
     constructor(name) {
         this.name = name
         this.pokemonList = []

@@ -21,6 +21,7 @@ export class PokemonCard extends Component {
 }
 
 const cardStyle = {
+    zIndex: 3,
     backgroundColor: '#fff',
     width: '40%',
     height: '100%',
