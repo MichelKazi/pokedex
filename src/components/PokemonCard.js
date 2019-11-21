@@ -45,7 +45,7 @@ const cardStyle = {
     zIndex: 3,
     backgroundColor: '#fff',
     width: '40%',
-    height: '100%',
+    height: '100vh',
     textAlign: 'center'
 }
 

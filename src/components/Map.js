@@ -22,20 +22,33 @@ export class Map extends Component {
     //binding the this keyword
     this.showLabel=this.showLabel.bind(this)
     this.hideLabel=this.hideLabel.bind(this)
-    this.genPokemon=this.genPokemon.bind(this)
-}
+    this.locate=this.locate.bind(this)
+    }
+
+    componentDidMount(){
+        this.locate()
+    }
+
+    locate() {
+        navigator.geolocation.getCurrentPosition(position => {
+            this.setState({
+                viewport: {
+                    width: "70%",
+                    height: 700,
+                    longitude: position.coords.longitude,
+                    latitude: position.coords.latitude,
+                    zoom: 12
+                }})
+        })
+
+    }
+
     showLabel() {
         this.setState({
             labelShowing: true,
         })
     }
 
-    genPokemon() {
-        
-        this.setState({
-            renderedPokemon: new Pokemon(Math.floor(Math.random() * 800) + 1)
-        })
-    }
 
     hideLabel() {
         this.setState({labelShowing: false})
