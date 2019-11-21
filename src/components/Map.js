@@ -16,8 +16,7 @@ export class Map extends Component {
             longitude: -74.011020,
             zoom: 12
         },
-        labelShowing : false,
-        renderedPokemon : null
+        labelShowing : false
     };
 
     //binding the this keyword
@@ -32,8 +31,9 @@ export class Map extends Component {
     }
 
     genPokemon() {
+        
         this.setState({
-            renderedPokemon: null
+            renderedPokemon: new Pokemon(Math.floor(Math.random() * 800) + 1)
         })
     }
 
