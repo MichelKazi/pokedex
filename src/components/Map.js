@@ -6,94 +6,97 @@ import PokemonCard from './PokemonCard';
 
 export class Map extends Component {
 
-    constructor(props){
-        super(props)
-        this.state = {
-        viewport: {
-            width: "70%",
-            height: 700,
-            latitude: 40.704200,
-            longitude: -74.011020,
-            zoom: 7
-        },
-        labelShowing : false,
-        navigatorChecked: false,
-        
+  constructor(props) {
+    super(props)
+    this.state = {
+      viewport: {
+        width: "70%",
+        height: 700,
+        latitude: 40.704200,
+        longitude: -74.011020,
+        zoom: 7
+      },
+      labelShowing: false,
+      navigatorChecked: false,
+
     };
     //binding the this keyword
-    this.showLabel=this.showLabel.bind(this)
-    this.hideLabel=this.hideLabel.bind(this)
-    this.locate=this.locate.bind(this)
+    this.showLabel = this.showLabel.bind(this)
+    this.hideLabel = this.hideLabel.bind(this)
+    this.locate = this.locate.bind(this)
+  }
+
+  componentDidMount() {
+    this.locate()
+  } //locate is left here because this will toggle navigatorChecked
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.navigatorChecked !== this.state.navigatorChecked) {
+      const locations = Array(50).fill(0)
+        .map(() => ({
+          lat: this.state.viewport.latitude + ((Math.random() - 0.5) / 15),
+          lng: this.state.viewport.longitude + ((Math.random() - 0.5) / 15),
+        }));
+      this.setState({ locations })
     }
+  }
 
-    componentDidMount(){
-        this.locate()
-      } //locate is left here because this will toggle navigatorChecked
-      
-    componentDidUpdate(prevProps, prevState) {
-      if (prevState.navigatorChecked !== this.state.navigatorChecked) {
-        const locations = Array(50).fill(0)
-            .map(() => ({
-                lat: this.state.viewport.latitude + ((Math.random() - 0.5) / 15),
-                lng: this.state.viewport.longitude + ((Math.random() - 0.5) / 15),
-            }));    
-        this.setState({ locations })
-    }//now update 
-      }
-
-    locate(cb = _ => {}) {
-        if (!navigator) {
-            this.setState({ navigatorChecked: true }, cb())
-        } else {
-            navigator.geolocation.getCurrentPosition(userLocation => {
-                this.setState({
-                    navigatorChecked: true,
-                    viewport: {
-                      width: "70%",
-                      height: 700,
-                      longitude: userLocation.coords.longitude,
-                      latitude: userLocation.coords.latitude,
-                      zoom: 13
-                    },
-                }, cb())
-            })
-        }
-      
-
-    }
-
-    showLabel() {
+  locate(cb = _ => { }) {
+    if (!navigator) {
+      this.setState({ navigatorChecked: true }, cb())
+    } else {
+      navigator.geolocation.getCurrentPosition(userLocation => {
         this.setState({
-            labelShowing: true,
-        })
+          navigatorChecked: true,
+          viewport: {
+            width: "70%",
+            height: 700,
+            longitude: userLocation.coords.longitude,
+            latitude: userLocation.coords.latitude,
+            zoom: 13
+          },
+        }, cb())
+      })
     }
+  }
+
+  setPokemon(pokemon){
+    this.setState({ pokemon })
+  }
+
+  showLabel() {
+    this.setState({
+      labelShowing: true,
+    })
+  }
 
 
-    hideLabel() {
-        this.setState({labelShowing: false})
-    }
+  hideLabel() {
+    this.setState({ labelShowing: false })
+  }
 
 
-    render() {
-        return (
-          <div>
-            <ReactMapGL className ="map"
-                mapboxApiAccessToken={'pk.eyJ1IjoibWthemkiLCJhIjoiY2szNm42Y214MDM5djNjcnozcmFseGplaiJ9.romUGZKRAwbaprnN_LrRiw'}
-                {...this.state.viewport}
-                onViewportChange={(viewport) => this.setState({ viewport })}
-                >
-                {this.state.labelShowing && <PokemonCard style={{zIndex: 1}} onClick={this.hideLabel}></PokemonCard>}
-                {this.state.navigatorChecked && this.state.locations && this.state.locations.map(({ lat, lng }) => (
-                    <Marker latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
-                        <PokeballMarker onClick={this.showLabel} />
-                    </Marker>
-                ))}
-                
-                
-            </ReactMapGL>
-          </div>
-        );
-    }
+
+  render() {
+    return (
+      <div>
+        <ReactMapGL className="map"
+          mapboxApiAccessToken={'pk.eyJ1IjoibWthemkiLCJhIjoiY2szNm42Y214MDM5djNjcnozcmFseGplaiJ9.romUGZKRAwbaprnN_LrRiw'}
+          {...this.state.viewport}
+          onViewportChange={(viewport) => this.setState({ viewport })}
+        >
+          {this.state.labelShowing && <PokemonCard style={{ zIndex: 1 }} onClick={this.hideLabel}></PokemonCard>}
+          {this.state.navigatorChecked && this.state.locations && this.state.locations.map(({ lat, lng }) => (
+            <Marker latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
+              <PokeballMarker onClick={this.showLabel} />
+            </Marker>
+          ))}
+
+
+        </ReactMapGL>
+      </div>
+    );
+  }
 }
 
 export default Map

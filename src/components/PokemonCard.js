@@ -8,12 +8,21 @@ export class PokemonCard extends Component {
             pokemon: null,
             loaded: false
         }
+
+        //bind this keyword
+        this.setPokemon=this.setPokemon.bind(this)
     }
 
-    componentDidMount(){
-        // this will make a new random pokemon when the component mounts, and set loaded to true
-        const p = new Pokemon(Math.floor(Math.random() * 800) + 1)
-        p.randomQuery().then((pokemon)=> this.setState({pokemon, loaded: true})) // this logic works on a promise, hence I call it on a method
+    setPokemon() {
+        const p = this.state.pokemon ? Promise.resolve(this.state.pokemon) :  _ => {
+            const fetchedPokemon = new Pokemon();
+            const pokemon = fetchedPokemon.randomQuery()
+            return this.setState({ pokemon })
+    }
+
+        p.then(pokemon => {
+            this.props.handlerFromMap(pokemon)
+        })
     }
 
     render() {
