@@ -51,7 +51,7 @@ export class Map extends Component {
             >
                 {this.state.labelShowing && <PokemonCard style={{zIndex: 1}} onClick={this.hideLabel}></PokemonCard>}
                 
-                <Marker style={{zIndex: 1}} captureClick={false} latitude={40.715326} longitude={-73.992354} offsetLeft={-20} offsetTop={-10}> 
+                <Marker style={{zIndex: -1}} captureClick={false} latitude={40.715326} longitude={-73.992354} offsetLeft={-20} offsetTop={-10}> 
                     <PokeballMarker onClick={this.showLabel}/>
                 </Marker>
                 

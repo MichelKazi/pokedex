@@ -1,5 +1,5 @@
 import Pokemon from './Pokemon'
-const axios = require('axios')
+
 
 export class Trainer {
     constructor(name) {
@@ -17,40 +17,12 @@ export class Trainer {
     }
 
     addPokemon(input) {
-        return this.fetchPokeAPI(input).then(acquiredPokemon => {
-            const stats = {
-                weight : acquiredPokemon.weight,
-                hp : acquiredPokemon.stats[5].base_stat, // For every single Pokemon JSON, 
-                attack : acquiredPokemon.stats[4].base_stat, // these indices for stats will
-                defense : acquiredPokemon.stats[3].base_stat, // always be the same 
-                abilities : acquiredPokemon.abilities.map( abilities => {
-                    return abilities.ability.name.replace('-', ' ')
-                })    
-            }
-            const pokemonToAdd = new Pokemon(acquiredPokemon.name, stats)
-            pokemonToAdd.spriteURL = acquiredPokemon.sprites.front_default
-            this.pokemonList.push(pokemonToAdd)
-            return console.log(`${pokemonToAdd.name} was added to ${this.name}'s team!`);  
-        })
-
+        const added = new Pokemon()
+        added.queryData(input)
+        this.pokemonList.push(added)
     }
 
     removePokemon(input) {
-        
-    }
-
-    fetchPokeAPI = async (input) => {
-        let response
-
-        try {
-            response = await axios.get(`https://fizal.me/pokeapi/api/v2/${isNaN(input) ? 'name/' : 'id/'}${input}.json`)
-            response = response.data
-            return response
-        }
-        catch (err) {
-            console.error(`${input} was not a valid entry!`)
-        }
-        
         
     }
 
