@@ -2,8 +2,12 @@ import { promised } from 'q'
 
 const axios = require('axios')
 export class Pokemon {
-    constructor(id) {
-        this.queryData(id)
+    constructor() {
+        this.name = null
+    }
+
+    randomQuery() {
+        return this.queryData(Math.floor(Math.random() * 800) + 1)
     }
 
     queryData = async (id) => {
