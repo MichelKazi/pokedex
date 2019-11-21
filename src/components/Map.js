@@ -14,7 +14,7 @@ export class Map extends Component {
             height: 700,
             latitude: 40.704200,
             longitude: -74.011020,
-            zoom: 14
+            zoom: 7
         },
         labelShowing : false,
         navigatorChecked: false,
