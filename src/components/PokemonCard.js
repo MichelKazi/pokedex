@@ -23,7 +23,7 @@ export class PokemonCard extends Component {
         
         return (
             <div>
-                {!this.state.loaded && <div>Loading Pokemon...</div>}
+                {!this.state.loaded && <div style={cardStyle}>Loading Pokemon...</div>}
 
                 {this.state.loaded && <div style={cardStyle} onClick={this.props.onClick}>
                    <h1>{this.state.pokemon.name}</h1> 
@@ -42,10 +42,11 @@ export class PokemonCard extends Component {
 }
 
 const cardStyle = {
+    position: 'absolute',
     zIndex: 3,
     backgroundColor: '#fff',
-    width: '40%',
-    height: '100vh',
+    width: '20%',
+    height: 700,
     textAlign: 'center'
 }
 
