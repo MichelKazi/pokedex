@@ -11,7 +11,7 @@ export class Map extends Component {
     super(props)
     this.state = {
       viewport: {
-        width: "70%",
+        width: "85vw",
         height: "100vh",
         latitude: 40.704200,
         longitude: -74.011020,
@@ -51,11 +51,11 @@ export class Map extends Component {
         this.setState({
           navigatorChecked: true,
           viewport: {
-            width: "70%",
+            width: "85vw",
             height: "100vh",
             longitude: userLocation.coords.longitude,
             latitude: userLocation.coords.latitude,
-            zoom: 13
+            zoom: 12.5
           },
         }, cb())
       })
@@ -81,7 +81,7 @@ export class Map extends Component {
   render() {
     return (
       <div>
-        <ReactMapGL className="map"
+        <ReactMapGL className="map" mapStyle="mapbox://styles/mapbox/dark-v10" style={{}}
           mapboxApiAccessToken={'pk.eyJ1IjoibWthemkiLCJhIjoiY2szNm42Y214MDM5djNjcnozcmFseGplaiJ9.romUGZKRAwbaprnN_LrRiw'}
           {...this.state.viewport}
           onViewportChange={(viewport) => this.setState({ viewport })}
