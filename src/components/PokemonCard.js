@@ -1,25 +1,20 @@
 import React, { Component } from 'react'
-import Pokemon from '../Pokemon'
+import '../styles/pokemonCard.scss'
 
 export class PokemonCard extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            pokemon: this.props.pokemon,
-        }
-    }
+
+
     render() {   
         return (
             <div>
                  <div style={cardStyle} onClick={this.props.onClick}>
-                   <h1>{this.state.pokemon.name}</h1> 
-                    <img src={this.state.pokemon.spriteURL} alt=""></img>
-                    <p>HP: {this.state.pokemon.hp}</p>
-                    <p>Attack: {this.state.pokemon.attack}</p>
-                    <p>Defense: {this.state.pokemon.defense}</p>
-                    <p>Weight: {this.state.pokemon.weight}</p>
+                   <h1>{this.props.pokemon.name}</h1> 
+                    <img src={this.props.pokemon.spriteURL} alt=""></img>
+                    <p>HP: {this.props.pokemon.hp}</p>
+                    <p>Attack: {this.props.pokemon.attack}</p>
+                    <p>Defense: {this.props.pokemon.defense}</p>
+                    <p>Weight: {this.props.pokemon.weight}</p>
                 </div>
-
             </div>
         )
         
@@ -31,7 +26,7 @@ const cardStyle = {
     zIndex: 3,
     backgroundColor: '#fff',
     width: '20%',
-    height: 700,
+    height: "100vh",
     textAlign: 'center'
 }
 

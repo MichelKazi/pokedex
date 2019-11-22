@@ -11,7 +11,7 @@ export class Map extends Component {
     this.state = {
       viewport: {
         width: "70%",
-        height: 700,
+        height: "100vh",
         latitude: 40.704200,
         longitude: -74.011020,
         zoom: 7
@@ -51,7 +51,7 @@ export class Map extends Component {
           navigatorChecked: true,
           viewport: {
             width: "70%",
-            height: 700,
+            height: "100vh",
             longitude: userLocation.coords.longitude,
             latitude: userLocation.coords.latitude,
             zoom: 13
@@ -63,6 +63,8 @@ export class Map extends Component {
 
   pokemonHandler(pokemon){
     this.setState({ pokemon })
+    console.log(pokemon);
+    
   }  //handler recieves pokemon from clicked pokeball
 
   showLabel() {

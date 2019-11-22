@@ -1,5 +1,3 @@
-import { promised } from 'q'
-
 const axios = require('axios')
 export class Pokemon {
     constructor() {
@@ -24,7 +22,7 @@ export class Pokemon {
             this.defense = acquiredPokemon.stats[3].base_stat // always be the same 
             this.weight = acquiredPokemon.weight
             this.spriteURL = acquiredPokemon.sprites.front_default
-            
+
             this.abilities = acquiredPokemon.abilities.map(abilities => {
                 return abilities.ability.name.replace('-', ' ')
             })
