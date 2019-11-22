@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import PokeballMarker from './PokeballMarker';
 import PokemonCard from './PokemonCard';
+import '../styles/map.scss'
 
 
 export class Map extends Component {
@@ -85,7 +86,7 @@ export class Map extends Component {
           {...this.state.viewport}
           onViewportChange={(viewport) => this.setState({ viewport })}
         >
-          {this.state.pokemon && <PokemonCard pokemon={this.state.pokemon} style={{ zIndex: 1 }} onClick={this.hideLabel}></PokemonCard>}
+           <PokemonCard pokemon={this.state.pokemon} style={{ zIndex: 1 }}></PokemonCard>
           {this.state.navigatorChecked && this.state.locations && this.state.locations.map(({ lat, lng }) => (
             <Marker latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
               <PokeballMarker pokemonHandler={this.pokemonHandler} />
