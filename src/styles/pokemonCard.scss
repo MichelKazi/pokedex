@@ -11,14 +11,27 @@
     h1{
         font-family: 'press start 2p';
     }
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    align-items: center;
+    justify-items: center;
 }
+
 
 #no-card {
     position: absolute;
+
     z-index: 3;
     background-color: rgba(44, 33, 33, 0.849);
     color: #fff;
     width: 33%;
     height: 100vh;
     text-align: center;
+    h2{
+      font-family: 'press start 2p', cursive;
+    }
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    align-items: center;
+    justify-items: center;
 }

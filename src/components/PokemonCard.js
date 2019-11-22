@@ -8,9 +8,9 @@ export class PokemonCard extends Component {
         return (
             <div>
                 {!this.props.pokemon && <div id="no-card">
-                    <h1>Welcome!</h1>
+                    <h2>Welcome!</h2>
                     <img src="http://pixelartmaker.com/art/dc12aa356cb08f1.png" width="150" alt=""></img> 
-                    <h2>Click on a pokeball and find out what's in it!</h2>   
+                    <h3>Click on a pokeball and find out what's in it!</h3>   
                 </div>}
 
                 {this.props.pokemon && <div id="card" >
