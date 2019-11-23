@@ -4,6 +4,7 @@ import './App.scss';
 import Trainer from './Trainer';
 import Dialogue from './components/Dialogue'
 import Map from './components/Map'
+import TrainerCard from './components/TrainerCard'
 
 class App extends Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class App extends Component {
        
        {/* <img id="oak" src="https://www.spriters-resource.com/resources/sheet_icons/4/3701.png" alt=""></img> */}
        <Map />
+       <TrainerCard />
        {/* <Dialogue dialogueIndex={this.state.dialogueIndex} onClick={this.acknowledge} onSubmit={this.makeTrainer}/> */}
      </div>
      
