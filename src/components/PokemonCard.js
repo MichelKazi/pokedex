@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../styles/pokemonCard.scss'
+import TrainerCard from './TrainerCard'
 
 export class PokemonCard extends Component {
 
@@ -34,13 +35,11 @@ export class PokemonCard extends Component {
                   </ul>
               </div>
             </div>
-
             <button id="catch" type="submit">Catch me!</button>
 
-          </div>
-          <div id="trainer">
 
           </div>
+          <TrainerCard />
           
         </div>}
       </div>

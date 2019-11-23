@@ -13,48 +13,52 @@
 
 #card {
     @extend %sidebar;
-    grid-template-rows: 40% 50%;
+    grid-template-rows: 50% 50%;
 
     #pokemon{
       width: 99%;
       display: grid;
       grid-template-rows: 15% 65% 10%;
-    }
-    #info{
-      display: grid;
-      grid-template-columns: 50% 50%;
-      #col1{
-        overflow: hidden;
-        #sprite{
-          height: 100%;
-        }
-      }
-      #col2{
+      #name{
         text-align: left;
-        align-self: center;
-        p{
-          margin: 0;
-          padding: 0;
+      }
+      #info{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        #col1{
+          position: relative;
+          #sprite{
+            height: 250px;
+            position: absolute;
+            left: -7.5%;
+          }
         }
-        ul{
-          list-style-type: none;
-          padding: 0;
-          li{
-            background-color: crimson;
-            width: fit-content;
-            margin-bottom: 2px;
+        #col2{
+          text-align: left;
+          align-self: center;
+          p{
+            margin: 0;
+            padding: 0;
+          }
+          ul{
+            list-style-type: none;
+            padding: 0;
+            li{
+  
+            }
           }
         }
       }
       
-      #catch{
-        
-      }
       
-    }
-}
+    }}
+
+   
   
-  #no-card {
+
+
+  
+#no-card {
     @extend %sidebar;
     align-items: center;
     h2{
