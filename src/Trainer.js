@@ -5,12 +5,13 @@ export class Trainer {
   constructor(name) {
     this.name = name
     this.pokemonList = []
-    this.team = []
+    this.equipped = null
 
     //binding this keyword for methods
     this.all = this.all.bind(this)
     this.addPokemon = this.addPokemon.bind(this)
     this.get = this.get.bind(this)
+    this.equip = this.equip.bind(this)
   }
 
   all() {
@@ -38,9 +39,9 @@ export class Trainer {
   }
 
   equip(pokemon){
-    if (this.pokemonList.includes(pokemon) && this.team.length <4){
-      this.team.push(pokemon)
-      return this.team
+    if (this.pokemonList.includes(pokemon)){
+      this.equipped = pokemon
+      return this.equipped
     }
     else console.error(`Your team is full!`);
     

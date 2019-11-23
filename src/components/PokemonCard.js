@@ -17,18 +17,31 @@ export class PokemonCard extends Component {
         {this.props.pokemon && <div id="card" >
 
 
-          <h2 id="name">{this.props.pokemon.name}</h2>
-          <img id="sprite" src={this.props.pokemon.spriteURL} alt=""></img>
-          <p id="hp">HP<br></br>{this.props.pokemon.hp}</p>
-          <p id="atk">Attack<br></br>{this.props.pokemon.attack}</p>
-          <p id="def">Defense<br></br>{this.props.pokemon.defense}</p>
-          <p id="weight">Weight<br></br>{this.props.pokemon.weight}</p>
-          <div id="abilities">
-            {this.props.pokemon.abilities.map((ability) => (
-              <p className="ability">{ability}</p>
-            ))}
+          <div id="pokemon">
+            <h2 id="name">{this.props.pokemon.name.toUpperCase()}</h2>
+            <div id="info">
+              <div id="col1">
+                <img id="sprite" src={this.props.pokemon.spriteURL} alt=""/>
+              </div>
+              <div id="col2">
+                <p id="hp">HP: {this.props.pokemon.hp}</p>
+                <p id="atk">ATK: {this.props.pokemon.attack}</p>
+                <p id="def">DEF: {this.props.pokemon.defense}</p>
+                  <ul id="abilities">
+                    {this.props.pokemon.abilities.map((ability) => (
+                      <li className="ability">{ability}</li>
+                    ))}
+                  </ul>
+              </div>
+            </div>
+
+            <button id="catch" type="submit">Catch me!</button>
 
           </div>
+          <div id="trainer">
+
+          </div>
+          
         </div>}
       </div>
     )

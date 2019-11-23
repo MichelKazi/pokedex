@@ -13,46 +13,46 @@
 
 #card {
     @extend %sidebar;
-    grid-template: repeat(8, 10%) / repeat(4, 25%);   
-    grid-template-areas: " . name name . "
-                          " . sprite sprite . "
-                          " . . . . "
-                          " . hp atk . "
-                          " . def wt . "
-                          " ab ab ab ab ";
-    #name{
-      margin-top: 15px;
-      grid-area: name;
+    grid-template-rows: 40% 50%;
+
+    #pokemon{
+      width: 99%;
+      display: grid;
+      grid-template-rows: 15% 65% 10%;
     }
-    #sprite {
-      grid-area: sprite;
-      min-height: 50%;
-  
-    }
-    #hp{
-      grid-area: hp;
-    }
-    #atk{
-      grid-area: atk;
-    }
-    #def{
-      grid-area: def;
-    }
-    #weight{
-      grid-area: wt;
-    }
-    #abilities{
-      grid-area: ab;
-      justify-self: center;
-      .ability{
-      width: 100%;
-      padding: 2% 5%;
-      text-align: center;
-      margin: 15px auto;
-     
+    #info{
+      display: grid;
+      grid-template-columns: 50% 50%;
+      #col1{
+        overflow: hidden;
+        #sprite{
+          height: 100%;
+        }
       }
+      #col2{
+        text-align: left;
+        align-self: center;
+        p{
+          margin: 0;
+          padding: 0;
+        }
+        ul{
+          list-style-type: none;
+          padding: 0;
+          li{
+            background-color: crimson;
+            width: fit-content;
+            margin-bottom: 2px;
+          }
+        }
+      }
+      
+      #catch{
+        
+      }
+      
     }
-  }
+}
   
   #no-card {
     @extend %sidebar;
