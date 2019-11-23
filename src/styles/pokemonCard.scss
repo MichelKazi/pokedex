@@ -3,7 +3,7 @@
     right: 0;
     z-index: 3;
     background-color: rgba(7, 7, 7, 0.849);
-    width: 25%;
+    width: 33%;
     height: 100vh;
     color: #fff;
     text-align: center;
@@ -49,7 +49,7 @@
       padding: 2% 5%;
       text-align: center;
       margin: 15px auto;
-      background-color: chocolate;
+     
       }
     }
   }
@@ -61,42 +61,8 @@
       font-family: 'press start 2p', cursive;
     }
     grid-template-rows: repeat(3, auto);
-}
-
-  
-  #no-card {
-    position: absolute;
-    
-    z-index: 3;
-    background-color: rgba(7, 7, 7, 0.849);
-    color: #fff;
-    width: 25%;
-    height: 100vh;
-    text-align: center;
-    h2{
-      font-family: 'press start 2p', cursive;
-    }
-    display: grid;
-    grid-template-rows: repeat(3, auto);
     align-items: center;
     justify-items: center;
 }
 
   
-  #no-card {
-    position: absolute;
-    
-    z-index: 3;
-    background-color: rgba(7, 7, 7, 0.849);
-    color: #fff;
-    width: 25%;
-    height: 100vh;
-    text-align: center;
-    h2{
-      font-family: 'press start 2p', cursive;
-    }
-    display: grid;
-    grid-template-rows: repeat(3, auto);
-    align-items: center;
-    justify-items: center;
-}
