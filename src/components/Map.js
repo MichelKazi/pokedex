@@ -10,7 +10,7 @@ export class Map extends Component {
     super(props)
     this.state = {
       viewport: {
-        width: "80vw",
+        width: "100vw",
         height: "100vh",
         latitude: 40.704200,
         longitude: -74.011020,
@@ -54,7 +54,7 @@ export class Map extends Component {
         this.setState({
           navigatorChecked: true,
           viewport: {
-            width: "75vw",
+            width: "100vw",
             height: "100vh",
             longitude: userLocation.coords.longitude,
             latitude: userLocation.coords.latitude,

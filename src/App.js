@@ -44,11 +44,7 @@ class App extends Component {
     console.log('app.js state', this.state)
    return (
      <div id="dialogue-container">
-       
-       {/* <img id="oak" src="https://www.spriters-resource.com/resources/sheet_icons/4/3701.png" alt=""></img> */}
        <Map />
-       <TrainerCard />
-       {/* <Dialogue dialogueIndex={this.state.dialogueIndex} onClick={this.acknowledge} onSubmit={this.makeTrainer}/> */}
      </div>
      
    );
