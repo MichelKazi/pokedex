@@ -5,6 +5,7 @@ import Trainer from './Trainer';
 import Dialogue from './components/Dialogue'
 import Map from './components/Map'
 import TrainerCard from './components/TrainerCard'
+import Pokemon from './Pokemon';
 
 class App extends Component {
   constructor(props) {
@@ -22,6 +23,8 @@ class App extends Component {
   }
   componentDidMount() {
     window.trainer = new Trainer('')
+    
+  
   }
 
   acknowledge() {

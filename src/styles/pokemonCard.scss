@@ -1,5 +1,5 @@
-#card {
-    position: absolute;
+%sidebar{
+   position: absolute;
     right: 0;
     z-index: 3;
     background-color: rgba(7, 7, 7, 0.849);
@@ -9,6 +9,10 @@
     text-align: center;
     display: grid;
     justify-items: center;
+}
+
+#card {
+    @extend %sidebar;
     grid-template: repeat(8, 10%) / repeat(4, 25%);   
     grid-template-areas: " . name name . "
                           " . sprite sprite . "
@@ -51,21 +55,12 @@
   }
   
   #no-card {
-    position: absolute;
-    right: 0;
-    z-index: 3;
-    background-color: rgba(7, 7, 7, 0.849);
-    color: #fff;
-    width: 25%;
-    height: 100vh;
-    text-align: center;
+    @extend %sidebar;
+    align-items: center;
     h2{
       font-family: 'press start 2p', cursive;
     }
-    display: grid;
     grid-template-rows: repeat(3, auto);
-    align-items: center;
-    justify-items: center;
 }
 
   

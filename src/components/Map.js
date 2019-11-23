@@ -18,7 +18,8 @@ export class Map extends Component {
       },
       labelShowing: false,
       navigatorChecked: false,
-      pokemon: null
+      pokemon: null,
+      trainer: null
     };
 
     this.mapStyle = {

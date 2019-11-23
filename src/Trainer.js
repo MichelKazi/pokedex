@@ -9,16 +9,21 @@ export class Trainer {
         //binding this keyword for methods
         this.all = this.all.bind(this)
         this.addPokemon = this.addPokemon.bind(this)
+        this.get = this.get.bind(this)
     }
 
     all () {
         return this.pokemonList
     }
 
-    addPokemon(input) {
-        const added = new Pokemon()
-        added.queryData(input)
-        this.pokemonList.push(added)
+    addPokemon(pokemon) {
+        this.pokemonList.push(pokemon)
+    }
+
+    get(pokemon){
+        if(this.pokemonList.includes(pokemon))
+            return this.pokemonList[this.pokemonList.indexOf(pokemon)]
+        return `You don't have this Pokemon`
     }
 
     removePokemon(input) {
