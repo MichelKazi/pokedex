@@ -44,6 +44,9 @@ export class Trainer {
   get(pokemon) {
     if (this.pokemonList.includes(pokemon))
       return this.pokemonList[this.pokemonList.indexOf(pokemon)]
+    else if (this.equipped===pokemon){
+      return this.equipped
+    }
     return null
   }
 

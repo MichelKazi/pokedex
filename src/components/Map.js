@@ -11,11 +11,14 @@ export class Map extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      
       viewport: {
         width: "92vw",
         height: "85.5vh",
         latitude: 40.704200,
         longitude: -74.011020,
+        maxZoom: 16,
+        minZoom: 10,
         zoom: 10
       },
       labelShowing: false,
@@ -44,7 +47,7 @@ export class Map extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.navigatorChecked !== this.state.navigatorChecked) {
-      const locations = Array(90).fill(0)
+      const locations = Array(40).fill(0)
         .map(() => ({
           lat: this.state.viewport.latitude + ((Math.random() - 0.575) / 7.5),
           lng: this.state.viewport.longitude + ((Math.random() - 0.5) / 7.5),
@@ -65,6 +68,8 @@ export class Map extends Component {
             height: "85.5vh",
             longitude: userLocation.coords.longitude,
             latitude: userLocation.coords.latitude,
+            maxZoom: 16,
+            minZoom: 10,
             zoom: 12
           },
         }, cb())
@@ -92,9 +97,10 @@ export class Map extends Component {
   render() {
     return (
       <div>
-        <ReactMapGL className="map" mapStyle="mapbox://styles/mapbox/dark-v10" style={this.mapStyle}
+        <ReactMapGL className="map" captureDoubleClick={false} mapStyle="mapbox://styles/mapbox/dark-v10"  style={this.mapStyle}
           mapboxApiAccessToken={'pk.eyJ1IjoibWthemkiLCJhIjoiY2szNm42Y214MDM5djNjcnozcmFseGplaiJ9.romUGZKRAwbaprnN_LrRiw'}
           {...this.state.viewport}
+          
           onViewportChange={(viewport) => this.setState({ viewport })}
         >
           <Card

@@ -20,10 +20,10 @@ export class TrainerCard extends Component {
             {this.props.trainer.equipped && <img id="equip" onClick={() => { this.props.setPokemon(this.props.trainer.equipped) }} src={this.props.trainer.equipped.spriteURL} alt="" />}
           </div>
           <div id="slots">
-            <div class="slot">  </div>
-            <div class="slot">  </div>
-            <div class="slot">  </div>
-            <div class="slot">  </div>
+            <div className="slot">  </div>
+            <div className="slot">  </div>
+            <div className="slot">  </div>
+            <div className="slot">  </div>
           </div>
 
           {this.props.trainer && <div id="pokemonInSlot">

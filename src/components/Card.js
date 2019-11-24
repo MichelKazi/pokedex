@@ -64,7 +64,7 @@ export class Card extends Component {
 
         {!this.props.trainer && <Welcome style={this.state.welcomeStyle} starters={this.props.starters} initTrainer={this.initTrainer} trainer={this.props.trainer} pokemon={this.props.pokemon} />}
 
-        {this.props.pokemon && <div id="card" >
+        {this.props.pokemon && <div id="card" style={{backgroundColor: randomColor({hue: 'purple', luminosity: 'dark'})}} >
 
           <PokemonCard dismiss={this.props.clearPokemon} 
           equipToTrainer={this.equipToTrainer} 
