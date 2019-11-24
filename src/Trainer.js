@@ -3,7 +3,7 @@ export class Trainer {
     this.name = name
     this.pokemonList = []
     this.equipped = null
-    this.pokeballs = 4 - this.pokemonList.length
+    this.pokeballs = 4
 
     //binding this keyword for methods
     this.all = this.all.bind(this)
@@ -28,15 +28,17 @@ export class Trainer {
     else {
       
      this.pokemonList.push(pokemon)
+     this.pokeballs--
     }
       
   }
 
 
   removePokemon(pokemon) {
-    if(this.pokemonList.includes(pokemon)){
-      this.pokemonList.splice(this.pokemonList.indexOf(pokemon))
-    }
+    
+    this.pokemonList = this.pokemonList.filter(p => p.id!==pokemon.id)
+    
+    this.pokeballs++
   }
 
   get(pokemon) {
@@ -46,12 +48,10 @@ export class Trainer {
   }
 
   equip(pokemon){
-    if (this.pokemonList.includes(pokemon)){
-      this.pokemonList.splice(this.pokemonList.indexOf(pokemon))
-      this.pokemonList.push(this.equipped)
-      this.equipped=pokemon
-    }
-    else console.error(`You don't have that pokemon!`);
+    this.removePokemon(pokemon)
+    this.pokemonList.push(this.equipped)
+    this.equipped=null
+    this.equipped=pokemon
   }
 
 }
