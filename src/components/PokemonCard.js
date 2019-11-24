@@ -23,9 +23,9 @@ export class PokemonCard extends Component {
           ))}
         </ul>
         <p id="btncaption">Catch Me!</p>
-        <div id="pokeball">
+        {this.props.trainer.pokeballs!==0 && <div id="pokeball">
           <button id="catch" onClick={this.props.setTrainer} type="submit"></button>
-        </div>
+        </div>}
       </div>
     )
   }

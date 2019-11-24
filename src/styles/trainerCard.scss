@@ -1,53 +1,89 @@
- #trainer{
-      width: 99%;
-      display: grid;
-      grid-template-rows: 15% 85%;
+
+%slotgrid{
+  position: absolute;
+  right:7.5%;
+  top:4%;
+  display: grid;
+  grid-template: repeat(2, 80px) / repeat(2, 80px);
+  gap: 3px;
+}
+
+
+#trainerCard{
+    position: absolute;
+    right: 0;
+    z-index: 3;
+    background-color: rgba(7, 7, 7, 0.849);
+    width: 33%;
+    height: 100%;
+    color: #fff;
+    text-align: center;  
+      
       #name{
-        text-align: left;
+        text-align: center;
       }
-      #info{
-        display: grid;
-        grid-template-columns: 30% 20% 50%;
-        #col1{
-          position: relative;
+      #inventory{ 
+        position: relative;
+        
+        margin: 0 auto;
+        
+        #trainer{
+          position: absolute;
+          left: 0;
+          height: 300px;
+          width: 300px;
           #trainerSprite{
-            position: absolute;
-            left: -35%;
             height: 300px;
-            }
-        }
-        #col2{
-          position: relative;
+            z-index: 2;
+          }
           #equip{
             position: absolute;
-            left:-2.5%;
-            bottom:20%;
-            transform: scale(1.5, 1.5);
+            right: 6%;
+            bottom: 26%;
+            transform: scale(1.45, 1.45);
+            z-index: 1;
           }
         }
-        #col3{
-          margin: auto auto;
-          display: grid;
-         
-          #slots{
-            display: grid;
-            grid-template: repeat(2, 96px) / repeat(2, 96px);
-            .slot{
-              height: 90px;
-              width: 90px;
-              margin: 3px;
-              background-color: #363636;
-              transition: .3s;
-              img{
-                margin: 0;
-                height: 96px;
-              }
-            }
-            .slot:hover{
-              background-color: #535353;
+        #slots{
+          @extend %slotgrid;
+          
+          .slot{
+            height: 80px;
+            width: 80px;
+            margin: 3px;
+            background-color: #363636;
+            transition: .3s;
+            img{
+              margin: 0;
+              height: 96px;
             }
           }
-          
+          .slot:hover{
+            background-color: #535353;
+          }
+          }
+          #pokemonInSlot{
+            @extend %slotgrid;
+              img{
+                margin: 3px;
+                width: 80px;
+                height: 80px;
+                transition: .2s;
+              }
+              img:hover{
+                background-color: #8d8d8d;
+              }   
+          }
+      }
+      #pokeballs{
+        position: absolute;
+    top: 245px;
+    left: 22%;
+    transform: scale(.75);
+        img{
+          height: 60px;
+          width: 60px;
+          transition: .5s;
         }
       }
-    }
+}

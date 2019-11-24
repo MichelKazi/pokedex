@@ -3,6 +3,7 @@ export class Trainer {
     this.name = name
     this.pokemonList = []
     this.equipped = null
+    this.pokeballs = 4
 
     //binding this keyword for methods
     this.all = this.all.bind(this)
@@ -20,18 +21,24 @@ export class Trainer {
   }
 
   addPokemon(pokemon) {
-    if(this.pokemonList.length >= 5){
-      console.error(`${this.name}'s team is full!`);
+    if(this.pokemonList.length > 4){
+      return console.error(`${this.name}'s team is full!`);
     }
     if(!this.equipped) return this.equipped=pokemon
-    else return this.pokemonList.push(pokemon)
+    else {
+      this.pokeballs--
+     this.pokemonList.push(pokemon)
+    }
+      
   }
 
 
   removePokemon(pokemon) {
-    if(this.get(pokemon))
+    if(this.get(pokemon)){
       if(this.equipped === pokemon) this.equipped=null
       this.pokemonList = this.pokemonList.splice(this.pokemonList.indexOf(pokemon))
+      this.pokeballs++
+    }
   }
 
   get(pokemon) {

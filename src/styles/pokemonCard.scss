@@ -1,32 +1,37 @@
 %sidebar{
    position: absolute;
-    right: 0;
+    right: 50%;
     z-index: 3;
     background-color: rgba(7, 7, 7, 0.849);
-    width: 25%;
+    width: 33%;
     height: 100%;
     color: #fff;
     text-align: center;
     display: grid;
     justify-items: center;
-    cursor: initial;
-}
-
-#card {
+  }
+  
+  #card {
     @extend %sidebar;
+    cursor: initial;
     grid-template-rows: 50% 50%;
-
+    position: absolute;
+    height: 300px;
+    width: 500px;
+    top: 75px;
     #pokemon{
+      transform: scale(.5);
+      width: 500px;
       display: block;
       h2{
-        margin-top: 35px;
+        margin-top: 10px;
       }
       #sprite{
         margin: 25px auto;
         transform: scale(2, 2)
       }
       #stats{
-        width: 99%;
+        width: 100%;
         font-size: 1.33em;
         display: grid;
         grid-template-columns: repeat(3, auto);
@@ -36,18 +41,14 @@
         
       }
       #abilities{
-        width: 99%;
+        width: 500px;
         display: flex;
         justify-content: space-evenly;
         list-style-type: none;
         padding-left: 0;
         li{
-          
-          margin: 5px auto;
           padding: 1% 2%;
-          min-width: 33%;
-          width: max-content;
-          background-color: darksalmon;
+          
         }
       }
     }}

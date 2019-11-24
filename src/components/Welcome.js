@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Pokemon from '../Pokemon';
 import '../styles/welcome.scss'
+import randomColor from 'randomcolor'
 
+const color = randomColor({hue: 'pink' , luminosity: 'dark'})
 export class Welcome extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +15,7 @@ export class Welcome extends Component {
         }
         this.setTrainer=this.setTrainer.bind(this)
         this.handleName=this.handleName.bind(this)
-
+        this.setStarter=this.setStarter.bind(this)
     }
 
     componentDidMount(){
@@ -33,28 +35,36 @@ export class Welcome extends Component {
         }
     }
 
+    setStarter(pokemon){
+        this.setState({ pokemon })
+        this.setTrainer()
+    }
+
    
     render() {
         return (
-            <div id="welcome">
+            <div style={ {backgroundColor: color} } id="welcome">
                 <h2>Pokedex</h2>
-                <div id="name">
-                    {!this.state.showStarters && <input id='name-box' placeholder="Enter your name" onKeyPress={this.handleName} onChange={(e) => this.setState({ name: e.target.value })} />}
-                </div>
+                <img height="200" src="https://thumbs.gfycat.com/MarriedJampackedDorking-max-1mb.gif" alt=""></img>
                 {this.state.showStarters && 
                 < >
                     <h3 id="message" >Please select a starter pokemon</h3>
                     <div id="starters" >   
                         {this.props.starters.map((pokemon, i) => (
-                            <div onClick={ ()=>{ this.setState({ pokemon }); this.setTrainer() } } key={i++} className="starters">
-                                <img src={pokemon.spriteURL} alt=""></img>
+                            <div key={i++} className="starters">
+                                <img id={pokemon.name} onClick={() => { this.setState({ pokemon }); this.setTrainer() }} src={pokemon.spriteURL} alt=""></img>
                             </div>
                         ))}
                     </div>
                 </>}
+                <div id="name">
+                    {!this.state.showStarters && <input id='name-box' placeholder="Enter your name" onKeyPress={this.handleName} onChange={(e) => this.setState({ name: e.target.value })} />}
+                </div>
             </div>
         )
     }
 }
+
+
 
 export default Welcome
