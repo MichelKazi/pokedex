@@ -50,7 +50,7 @@ class App extends Component {
     console.log('app.js state', this.state)
    return (
      <div >
-       <img id="bg" src="https://i.imgur.com/dN4wawE.png" alt=""></img>
+       <img id="bg" src="https://i.imgur.com/GnlN5nT.png" alt=""></img>
        <Map starters={this.state.starters} />
      </div>
      

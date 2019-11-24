@@ -49,6 +49,7 @@ export class Trainer {
 
   equip(pokemon){
     this.removePokemon(pokemon)
+    this.pokeballs--
     this.pokemonList.push(this.equipped)
     this.equipped=null
     this.equipped=pokemon
