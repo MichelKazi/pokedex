@@ -35,6 +35,7 @@ export class Map extends Component {
     this.locate = this.locate.bind(this)
     this.pokemonHandler = this.pokemonHandler.bind(this)
     this.trainerHandler = this.trainerHandler.bind(this)
+    this.clearPokemon = this.clearPokemon.bind(this)
   }
 
   componentDidMount() {
@@ -84,6 +85,9 @@ export class Map extends Component {
     
   }
   
+  clearPokemon(){
+    this.setState({pokemon: null})
+  }
 
   render() {
     return (
@@ -97,6 +101,7 @@ export class Map extends Component {
            starters = {this.props.starters}
            trainer = {this.state.trainer} 
            pokemon={this.state.pokemon} 
+           clearPokemon={this.clearPokemon}
            trainerHandler={this.trainerHandler}
            pokemonHandler={this.pokemonHandler} />
           {this.state.navigatorChecked && this.state.locations && this.state.trainer && this.state.locations.map(({ lat, lng }) => (

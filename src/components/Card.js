@@ -16,7 +16,7 @@ export class Card extends Component {
     },
     showTrainer: false
   }
-
+  
    this.setTrainer=this.setTrainer.bind(this)
    this.initTrainer=this.initTrainer.bind(this)
  }
@@ -32,8 +32,10 @@ export class Card extends Component {
     const trainer = this.props.trainer
     trainer.addPokemon(this.props.pokemon)
     this.props.trainerHandler(trainer)
-    this.props.pokemonHandler(null)
+    this.props.clearPokemon()
   }
+
+  
 
 
   render() {
@@ -44,7 +46,7 @@ export class Card extends Component {
 
         {this.props.pokemon && <div id="card" >
 
-          <PokemonCard setTrainer={this.setTrainer} trainer={this.props.trainer} pokemon={this.props.pokemon}/>
+          <PokemonCard dismiss={this.props.clearPokemon} setTrainer={this.setTrainer} trainer={this.props.trainer} pokemon={this.props.pokemon}/>
         </div>}
 
         {this.state.showTrainer && <TrainerCard trainer={this.props.trainer}/>}

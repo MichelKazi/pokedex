@@ -4,9 +4,17 @@ import '../styles/pokemonCard.scss'
 
 export class PokemonCard extends Component {
 
+  constructor(props) {
+    super(props);
+  
+  }
+  
+
+  
+
   render() {
     return (
-      <div id="pokemon">
+      <div  id="pokemon">
         <h2>{this.props.pokemon.name.toUpperCase()}</h2>
 
 
@@ -25,8 +33,8 @@ export class PokemonCard extends Component {
         {this.props.trainer.pokeballs!==0 && <div id="pokeball">
           <button id="catch" onClick={this.props.setTrainer} type="submit"></button>
         </div>}
-        {this.props.trainer.pokeballs == 0 && <p>You're out of Pokéballs!</p>}
-        <button id="close">Dismiss</button>
+        {this.props.trainer.pokeballs === 0 && <p>You're out of Pokéballs!</p>}
+        <button id="close" onClick={this.props.dismiss} >Dismiss</button>
       </div>
     )
   }
