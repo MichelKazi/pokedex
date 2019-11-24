@@ -20,12 +20,13 @@ export class PokemonCard extends Component {
         <ul id="abilities">
           {this.props.pokemon.abilities.map((ability, i) => (
             <li key={i++} className="ability">{ability}</li>
-          ))}
+            ))}
         </ul>
-        <p id="btncaption">Catch Me!</p>
         {this.props.trainer.pokeballs!==0 && <div id="pokeball">
           <button id="catch" onClick={this.props.setTrainer} type="submit"></button>
         </div>}
+        {this.props.trainer.pokeballs == 0 && <p>You're out of Pokéballs!</p>}
+        <button id="close">Dismiss</button>
       </div>
     )
   }

@@ -32,6 +32,7 @@ export class Card extends Component {
     const trainer = this.props.trainer
     trainer.addPokemon(this.props.pokemon)
     this.props.trainerHandler(trainer)
+    this.props.pokemonHandler(null)
   }
 
 

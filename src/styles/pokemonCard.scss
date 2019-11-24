@@ -19,13 +19,15 @@
     height: 300px;
     width: 500px;
     top: 75px;
+    background-color: steelblue;
+    border-radius: 15px;
+    border: 2px solid; 
     #pokemon{
+
       transform: scale(.5);
       width: 500px;
       display: block;
-      h2{
-        margin-top: 10px;
-      }
+      
       #sprite{
         margin: 25px auto;
         transform: scale(2, 2)
@@ -48,10 +50,12 @@
         padding-left: 0;
         li{
           padding: 1% 2%;
-          
+          background-color: tomato;
         }
       }
     }}
+
+
 
 #btncaption{
   margin: 10px 0px 2.5px;

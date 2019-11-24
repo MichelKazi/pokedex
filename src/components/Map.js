@@ -97,7 +97,8 @@ export class Map extends Component {
            starters = {this.props.starters}
            trainer = {this.state.trainer} 
            pokemon={this.state.pokemon} 
-           trainerHandler={this.trainerHandler} />
+           trainerHandler={this.trainerHandler}
+           pokemonHandler={this.pokemonHandler} />
           {this.state.navigatorChecked && this.state.locations && this.state.trainer && this.state.locations.map(({ lat, lng }) => (
             <Marker key={uuid.v4()} latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
               <PokeballMarker  pokemonHandler={this.pokemonHandler} />
