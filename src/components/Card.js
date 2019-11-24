@@ -4,7 +4,20 @@ import TrainerCard from './TrainerCard'
 import PokemonCard from './PokemonCard'
 
 export class Card extends Component {
+ constructor(props) {
+   super(props);
+   
+   this.setTrainer=this.setTrainer.bind(this)
+ }
  
+
+  setTrainer() {
+    const trainer = this.props.trainer
+    trainer.addPokemon(this.props.pokemon)
+    this.props.addPokemonHandler(trainer)
+  }
+
+
   render() {
     return (
       <div>
@@ -17,7 +30,7 @@ export class Card extends Component {
 
         {this.props.pokemon && <div id="card" >
 
-          <PokemonCard addPokemonhandler={this.props.sendToTrainer} trainer={this.props.trainer} pokemon={this.props.pokemon}/>
+          <PokemonCard setTrainer={this.setTrainer} trainer={this.props.trainer} pokemon={this.props.pokemon}/>
           
           <TrainerCard trainer={this.props.trainer}/>
           

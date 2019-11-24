@@ -33,11 +33,15 @@
             display: grid;
             grid-template: repeat(2, 96px) / repeat(2, 96px);
             .slot{
-              height: 85px;
-              width: 85px;
+              height: 90px;
+              width: 90px;
               margin: 3px;
               background-color: #363636;
               transition: .3s;
+              img{
+                margin: 0;
+                height: 96px;
+              }
             }
             .slot:hover{
               background-color: #535353;

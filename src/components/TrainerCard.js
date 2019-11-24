@@ -5,9 +5,6 @@ import '../styles/trainerCard.scss'
 export class TrainerCard extends Component {
 
 
-  componentDidUpdate(){
-    
-  }
   render() {
     return (
       <div id="trainer">
@@ -23,7 +20,8 @@ export class TrainerCard extends Component {
             <div id="slots">
               {this.props.trainer.pokemonList.map((pokemon) => (
                 <div className="slot"> {pokemon && <img src={pokemon.spriteURL} alt="" />} </div>
-              ))}              
+              ))} 
+                   
             </div>
           </div>
         </div>

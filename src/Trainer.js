@@ -36,6 +36,7 @@ export class Trainer {
 
   removePokemon(pokemon) {
     if(this.get(pokemon))
+      if(this.equipped === pokemon) this.equipped=null
       this.pokemonList = this.pokemonList.splice(this.pokemonList.indexOf(pokemon))
   }
 

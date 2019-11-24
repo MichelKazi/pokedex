@@ -30,6 +30,7 @@ export class Map extends Component {
     this.locate = this.locate.bind(this)
     this.pokemonHandler = this.pokemonHandler.bind(this)
     this.equipHandler = this.equipHandler.bind(this)
+    this.addPokemonHandler = this.addPokemonHandler.bind(this)
   }
 
   componentDidMount() {
@@ -73,8 +74,7 @@ export class Map extends Component {
   }  //handler recieves pokemon from clicked pokeball
 
   equipHandler(trainer){
-    const toEquip = this.state.pokemon
-    this.state.trainer.equip(toEquip)
+   this.setState({ trainer })
   }
 
   addPokemonHandler(trainer){
