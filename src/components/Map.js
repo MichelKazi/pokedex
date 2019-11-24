@@ -4,6 +4,7 @@ import PokeballMarker from './PokeballMarker';
 import Card from './Card'
 import '../styles/map.scss'
 import Trainer from '../Trainer';
+import uuid from 'uuid'
 
 export class Map extends Component {
   
@@ -79,6 +80,7 @@ export class Map extends Component {
 
   addPokemonHandler(trainer){
     this.setState({ trainer })
+    
   }
   
 
@@ -95,8 +97,8 @@ export class Map extends Component {
            pokemon={this.state.pokemon} 
            addPokemonHandler={this.addPokemonHandler} />
           {this.state.navigatorChecked && this.state.locations && this.state.locations.map(({ lat, lng }) => (
-            <Marker latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
-              <PokeballMarker pokemonHandler={this.pokemonHandler} />
+            <Marker key={uuid.v4()} latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
+              <PokeballMarker  pokemonHandler={this.pokemonHandler} />
             </Marker>
           ))}
 
