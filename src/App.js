@@ -11,7 +11,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      trainer: null,
       acknowledged : false,
       dialogueIndex: 0,
       typing: false
@@ -22,9 +21,7 @@ class App extends Component {
     this.makeTrainer = this.makeTrainer.bind(this)
   }
   componentDidMount() {
-    window.trainer = new Trainer('')
-    
-  
+    window.trainer = this.state.trainer
   }
 
   acknowledge() {
@@ -47,7 +44,7 @@ class App extends Component {
     console.log('app.js state', this.state)
    return (
      <div id="dialogue-container">
-       <Map />
+       <Map trainer={this.state.trainer} />
      </div>
      
    );

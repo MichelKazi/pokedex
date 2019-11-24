@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import PokeballMarker from './PokeballMarker';
-import PokemonCard from './PokemonCard';
+import Card from './Card'
 import '../styles/map.scss'
+import Trainer from '../Trainer';
 
 export class Map extends Component {
   
@@ -19,17 +20,16 @@ export class Map extends Component {
       labelShowing: false,
       navigatorChecked: false,
       pokemon: null,
-      trainer: null
+      trainer: new Trainer('Ness')
     };
 
     this.mapStyle = {
       position: 'absolute'
     }
     //binding the this keyword
-    this.showLabel = this.showLabel.bind(this)
-    this.hideLabel = this.hideLabel.bind(this)
     this.locate = this.locate.bind(this)
     this.pokemonHandler = this.pokemonHandler.bind(this)
+    this.equipHandler = this.equipHandler.bind(this)
   }
 
   componentDidMount() {
@@ -72,15 +72,15 @@ export class Map extends Component {
     
   }  //handler recieves pokemon from clicked pokeball
 
-  showLabel() {
-    this.setState({
-      labelShowing: true,
-    })
+  equipHandler(trainer){
+    const toEquip = this.state.pokemon
+    this.state.trainer.equip(toEquip)
   }
 
-  hideLabel() {
-    this.setState({ labelShowing: false })
+  addPokemonHandler(trainer){
+    this.setState({ trainer })
   }
+  
 
   render() {
     return (
@@ -90,7 +90,10 @@ export class Map extends Component {
           {...this.state.viewport}
           onViewportChange={(viewport) => this.setState({ viewport })}
         >
-           <PokemonCard pokemon={this.state.pokemon} style={{ zIndex: 1 }}></PokemonCard>
+           <Card 
+           trainer = {this.state.trainer} 
+           pokemon={this.state.pokemon} 
+           addPokemonHandler={this.addPokemonHandler} />
           {this.state.navigatorChecked && this.state.locations && this.state.locations.map(({ lat, lng }) => (
             <Marker latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
               <PokeballMarker pokemonHandler={this.pokemonHandler} />

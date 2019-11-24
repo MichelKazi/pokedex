@@ -23,7 +23,14 @@ export class Trainer {
   }
 
   addPokemon(pokemon) {
-    this.pokemonList.push(pokemon)
+    if(this.pokemonList.length >= 4){
+      console.error(`${this.name}'s team is full!`);
+    }
+    else if(this.pokemonList.length === 0){
+      this.pokemonList.push(pokemon)
+      return this.equip(pokemon)
+    }
+    else this.pokemonList.push(pokemon)
   }
 
 
