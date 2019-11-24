@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../styles/pokemonCard.scss'
-import Trainer from '../Trainer'
  
 
 export class PokemonCard extends Component {
@@ -19,8 +18,8 @@ export class PokemonCard extends Component {
           <p id="def">DEF <br/> {this.props.pokemon.defense}</p>
         </div>
         <ul id="abilities">
-          {this.props.pokemon.abilities.map((ability) => (
-            <li className="ability">{ability}</li>
+          {this.props.pokemon.abilities.map((ability, i) => (
+            <li key={i++} className="ability">{ability}</li>
           ))}
         </ul>
         <p id="btncaption">Catch Me!</p>

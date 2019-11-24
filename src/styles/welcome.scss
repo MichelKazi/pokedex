@@ -1,0 +1,15 @@
+#welcome{
+    background-color: rgba(199, 0, 0, 0.452);
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    #starters{
+        display: flex;
+        .starters{
+            width: 250px;
+            height: 250px;
+        }
+    }
+    
+}

@@ -6,6 +6,7 @@ import '../styles/map.scss'
 import Trainer from '../Trainer';
 import uuid from 'uuid'
 
+
 export class Map extends Component {
   
   constructor(props) {
@@ -21,7 +22,7 @@ export class Map extends Component {
       labelShowing: false,
       navigatorChecked: false,
       pokemon: null,
-      trainer: new Trainer('Ness')
+      trainer: null
     };
 
     this.mapStyle = {
@@ -30,8 +31,7 @@ export class Map extends Component {
     //binding the this keyword
     this.locate = this.locate.bind(this)
     this.pokemonHandler = this.pokemonHandler.bind(this)
-    this.equipHandler = this.equipHandler.bind(this)
-    this.addPokemonHandler = this.addPokemonHandler.bind(this)
+    this.trainerHandler = this.trainerHandler.bind(this)
   }
 
   componentDidMount() {
@@ -74,12 +74,10 @@ export class Map extends Component {
     
   }  //handler recieves pokemon from clicked pokeball
 
-  equipHandler(trainer){
-   this.setState({ trainer })
-  }
 
-  addPokemonHandler(trainer){
+  trainerHandler(trainer){
     this.setState({ trainer })
+    console.log(trainer);
     
   }
   
@@ -93,10 +91,11 @@ export class Map extends Component {
           onViewportChange={(viewport) => this.setState({ viewport })}
         >
            <Card 
+           starters = {this.props.starters}
            trainer = {this.state.trainer} 
            pokemon={this.state.pokemon} 
-           addPokemonHandler={this.addPokemonHandler} />
-          {this.state.navigatorChecked && this.state.locations && this.state.locations.map(({ lat, lng }) => (
+           trainerHandler={this.trainerHandler} />
+          {this.state.navigatorChecked && this.state.locations && this.state.trainer && this.state.locations.map(({ lat, lng }) => (
             <Marker key={uuid.v4()} latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
               <PokeballMarker  pokemonHandler={this.pokemonHandler} />
             </Marker>

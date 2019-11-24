@@ -82,6 +82,7 @@
   
 #no-card {
     @extend %sidebar;
+    width: 33%;
     align-items: center;
     h2{
       font-family: 'press start 2p', cursive;

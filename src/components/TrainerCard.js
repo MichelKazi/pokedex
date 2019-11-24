@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Trainer from '../Trainer'
 import '../styles/trainerCard.scss'
 
 export class TrainerCard extends Component {
@@ -18,8 +17,8 @@ export class TrainerCard extends Component {
           </div>
           <div id="col3">
             <div id="slots">
-              {this.props.trainer.pokemonList.map((pokemon) => (
-                <div className="slot"> {pokemon && <img src={pokemon.spriteURL} alt="" />} </div>
+              {this.props.trainer.pokemonList.map((pokemon, i) => (
+                <div key={i++}className="slot"> {pokemon && <img src={pokemon.spriteURL} alt="" />} </div>
               ))} 
                    
             </div>

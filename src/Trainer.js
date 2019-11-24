@@ -1,6 +1,3 @@
-import Pokemon from './Pokemon'
-
-
 export class Trainer {
   constructor(name) {
     this.name = name
@@ -23,12 +20,11 @@ export class Trainer {
   }
 
   addPokemon(pokemon) {
-    if(this.pokemonList.length >= 4){
+    if(this.pokemonList.length >= 5){
       console.error(`${this.name}'s team is full!`);
     }
     else if(this.pokemonList.length === 0){
-      this.pokemonList.push(pokemon)
-      return this.equip(pokemon)
+      return this.equipped=pokemon
     }
     else this.pokemonList.push(pokemon)
   }
@@ -48,10 +44,11 @@ export class Trainer {
 
   equip(pokemon){
     if (this.pokemonList.includes(pokemon)){
-      this.equipped = pokemon
-      return this.equipped
+      const toEquip = this.pokemonList.splice(this.pokemonList.indexOf(pokemon))
+      this.pokemonList.push(this.equipped)
+      this.equipped=toEquip
     }
-    else console.error(`Your team is full!`);
+    else console.error(`You don't have that pokemon!`);
     
   }
 }

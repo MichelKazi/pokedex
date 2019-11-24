@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import Trainer from './Trainer';
-import Dialogue from './components/Dialogue'
+import Pokemon from './Pokemon'
 import Map from './components/Map'
-import TrainerCard from './components/TrainerCard'
-import Pokemon from './Pokemon';
+
+const bulbasaur = new Pokemon()
+const charmander = new Pokemon()
+const squirtle = new Pokemon()
+bulbasaur.queryData(1)
+charmander.queryData(4)
+squirtle.queryData(7)
+const starters = [charmander, bulbasaur, squirtle]
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +18,8 @@ class App extends Component {
     this.state = {
       acknowledged : false,
       dialogueIndex: 0,
-      typing: false
+      typing: false,
+      starters
     }
 
     //bind this
@@ -44,7 +50,7 @@ class App extends Component {
     console.log('app.js state', this.state)
    return (
      <div id="dialogue-container">
-       <Map trainer={this.state.trainer} />
+       <Map starters={this.state.starters} />
      </div>
      
    );
