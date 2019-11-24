@@ -17,7 +17,7 @@ export class TrainerCard extends Component {
         <div id="inventory">
           <div id="trainer">
             <img src="https://art.pixilart.com/2275c1b42ddf9d6.png" id="trainerSprite" alt="" />
-            {this.props.trainer.equipped && <img id="equip" src={this.props.trainer.equipped.spriteURL} alt="" />}
+            {this.props.trainer.equipped && <img id="equip" onClick={() => { this.props.setPokemon(this.props.trainer.equipped) }} src={this.props.trainer.equipped.spriteURL} alt="" />}
           </div>
           <div id="slots">
             <div class="slot">  </div>
@@ -28,7 +28,7 @@ export class TrainerCard extends Component {
 
           {this.props.trainer && <div id="pokemonInSlot">
             { this.props.trainer.pokemonList.map((pokemon, i)=>(
-              <img key={i++} src = { pokemon.spriteURL } alt = "" />
+              this.props.trainer.pokemonList[i] && <img key={i} onClick={() => { this.props.setPokemon(this.props.trainer.pokemonList[i]) }} src = { pokemon.spriteURL } alt = "" />
             )) }
           </div>}
   

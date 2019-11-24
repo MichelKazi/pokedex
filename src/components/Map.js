@@ -7,7 +7,7 @@ import uuid from 'uuid'
 
 
 export class Map extends Component {
-  
+
   constructor(props) {
     super(props)
     this.state = {
@@ -28,7 +28,7 @@ export class Map extends Component {
       position: 'absolute',
       left: '4.65%',
       top: '3.95%'
-      
+
 
     }
     //binding the this keyword
@@ -41,7 +41,7 @@ export class Map extends Component {
   componentDidMount() {
     this.locate()
   } //locate is left here because this will toggle navigatorChecked
-  
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.navigatorChecked !== this.state.navigatorChecked) {
       const locations = Array(90).fill(0)
@@ -72,21 +72,21 @@ export class Map extends Component {
     }
   }
 
-  pokemonHandler(pokemon){
+  pokemonHandler(pokemon) {
     this.setState({ pokemon })
     console.log(pokemon);
-    
+
   }  //handler recieves pokemon from clicked pokeball
 
 
-  trainerHandler(trainer){
+  trainerHandler(trainer) {
     this.setState({ trainer })
     console.log(trainer);
-    
+
   }
-  
-  clearPokemon(){
-    this.setState({pokemon: null})
+
+  clearPokemon() {
+    this.setState({ pokemon: null })
   }
 
   render() {
@@ -97,16 +97,16 @@ export class Map extends Component {
           {...this.state.viewport}
           onViewportChange={(viewport) => this.setState({ viewport })}
         >
-           <Card 
-           starters = {this.props.starters}
-           trainer = {this.state.trainer} 
-           pokemon={this.state.pokemon} 
-           clearPokemon={this.clearPokemon}
-           trainerHandler={this.trainerHandler}
-           pokemonHandler={this.pokemonHandler} />
+          <Card
+            starters={this.props.starters}
+            trainer={this.state.trainer}
+            pokemon={this.state.pokemon}
+            clearPokemon={this.clearPokemon}
+            trainerHandler={this.trainerHandler}
+            pokemonHandler={this.pokemonHandler} />
           {this.state.navigatorChecked && this.state.locations && this.state.trainer && this.state.locations.map(({ lat, lng }) => (
             <Marker key={uuid.v4()} latitude={lat} longitude={lng} offsetLeft={-20} offsetTop={-10} style={{ zIndex: 21 }} captureClick={false}>
-              <PokeballMarker  pokemonHandler={this.pokemonHandler} />
+              <PokeballMarker pokemonHandler={this.pokemonHandler} />
             </Marker>
           ))}
 
