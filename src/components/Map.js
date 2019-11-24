@@ -3,7 +3,6 @@ import ReactMapGL, { Marker } from 'react-map-gl';
 import PokeballMarker from './PokeballMarker';
 import Card from './Card'
 import '../styles/map.scss'
-import Trainer from '../Trainer';
 import uuid from 'uuid'
 
 
@@ -13,11 +12,11 @@ export class Map extends Component {
     super(props)
     this.state = {
       viewport: {
-        width: "100vw",
-        height: "100vh",
+        width: "92vw",
+        height: "85.5vh",
         latitude: 40.704200,
         longitude: -74.011020,
-        zoom: 7
+        zoom: 10
       },
       labelShowing: false,
       navigatorChecked: false,
@@ -26,7 +25,11 @@ export class Map extends Component {
     };
 
     this.mapStyle = {
-      position: 'absolute'
+      position: 'absolute',
+      left: '4.65%',
+      top: '3.95%'
+      
+
     }
     //binding the this keyword
     this.locate = this.locate.bind(this)
@@ -57,11 +60,11 @@ export class Map extends Component {
         this.setState({
           navigatorChecked: true,
           viewport: {
-            width: "100vw",
-            height: "100vh",
+            width: "92.5vw",
+            height: "85.5vh",
             longitude: userLocation.coords.longitude,
             latitude: userLocation.coords.latitude,
-            zoom: 12.25
+            zoom: 12
           },
         }, cb())
       })

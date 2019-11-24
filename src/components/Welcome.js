@@ -33,23 +33,25 @@ export class Welcome extends Component {
         }
     }
 
-    handleStarter(){
-
-    }
-
+   
     render() {
         return (
             <div id="welcome">
                 <h2>Pokedex</h2>
-                <input id='name-box' placeholder="Enter your name" onKeyPress={this.handleName} onChange={(e) => this.setState({ name: e.target.value })} />
-                {this.state.showStarters && <div id="starters" >   
-                <h3>Please select a starter pokemon</h3>
-                    {this.props.starters.map((pokemon, i) => (
-                        <div onClick={ ()=>{ this.setState({ pokemon }); this.setTrainer() } } key={i++} className="starters">
-                            <img src={pokemon.spriteURL} alt=""></img>
-                        </div>
-                    ))}
-                </div>}
+                <div id="name">
+                    {!this.state.showStarters && <input id='name-box' placeholder="Enter your name" onKeyPress={this.handleName} onChange={(e) => this.setState({ name: e.target.value })} />}
+                </div>
+                {this.state.showStarters && 
+                < >
+                    <h3 id="message" >Please select a starter pokemon</h3>
+                    <div id="starters" >   
+                        {this.props.starters.map((pokemon, i) => (
+                            <div onClick={ ()=>{ this.setState({ pokemon }); this.setTrainer() } } key={i++} className="starters">
+                                <img src={pokemon.spriteURL} alt=""></img>
+                            </div>
+                        ))}
+                    </div>
+                </>}
             </div>
         )
     }

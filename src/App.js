@@ -49,7 +49,8 @@ class App extends Component {
   render() { 
     console.log('app.js state', this.state)
    return (
-     <div id="dialogue-container">
+     <div >
+       <img id="bg" src="https://i.imgur.com/dN4wawE.png" alt=""></img>
        <Map starters={this.state.starters} />
      </div>
      

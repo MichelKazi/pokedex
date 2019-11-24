@@ -23,10 +23,8 @@ export class Trainer {
     if(this.pokemonList.length >= 5){
       console.error(`${this.name}'s team is full!`);
     }
-    else if(this.pokemonList.length === 0){
-      return this.equipped=pokemon
-    }
-    else this.pokemonList.push(pokemon)
+    if(!this.equipped) return this.equipped=pokemon
+    else return this.pokemonList.push(pokemon)
   }
 
 
