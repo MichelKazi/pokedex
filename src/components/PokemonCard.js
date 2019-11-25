@@ -28,13 +28,13 @@ export class PokemonCard extends Component {
 
         { this.props.trainer.get(this.props.pokemon)==this.props.pokemon &&
           <div id="hasPokemon">
-            <button onClick={this.props.equipToTrainer}>Equip</button>
-          <button onClick={this.props.releaseFromTrainer}>Release</button>
+            <button className="btn" onClick={this.props.equipToTrainer}>Equip</button>
+          <button className="btn" onClick={this.props.releaseFromTrainer}>Release</button>
           </div>
         }
 
         {this.props.trainer.pokeballs === 0 && <p>You're out of Pokéballs!</p>}
-        <button id="close" onClick={this.props.dismiss} >Dismiss</button>
+        <button className="btn" onClick={this.props.dismiss} >Dismiss</button>
       </div>
     )
   }
