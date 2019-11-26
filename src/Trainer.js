@@ -16,10 +16,6 @@ export class Trainer {
     return this.pokemonList
   }
 
-  allTeam(){
-    return this.team
-  }
-
   addPokemon(pokemon) {
     if(this.pokemonList.length > 4){
       return console.error(`${this.name}'s team is full!`);
@@ -44,7 +40,6 @@ export class Trainer {
   get(pokemon) {
     if (this.pokemonList.includes(pokemon))
       return this.pokemonList[this.pokemonList.indexOf(pokemon)]
-    
     return null
   }
 
