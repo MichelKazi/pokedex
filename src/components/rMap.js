@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import ReactMapGL from 'react-map-gl'
 import '../styles/map.scss'
+import { usePrevious } from '../lib/usePrevious.js'
 require('dotenv').config()
 
 
 
 const Map = props => {
 
-	const [viewport, setViewport] = useState
-	({
+	const [viewport, setViewport] = useState({
 			width: "92vw",
 			height: "85.5vh",
 			latitude: 40.704200,
@@ -20,7 +20,25 @@ const Map = props => {
 	const [labelShowing, setLabelShowing] = useState(false)
 	const [navigatorChecked, setNaviagtorChecked] = useState(false)
 
-	
+	// Instead of having a locate function, just move its definition to useEffect
+	useEffect(() => {
+		if (!navigator){
+			setNaviagtorChecked(true)
+		} else {
+			navigator.geolocation.getCurrentPosition( userLocation => {
+				setNaviagtorChecked(true)
+				setViewport(
+					{
+						...viewport,
+						longitude: userLocation.coords.longitude,
+						latitude: userLocation.coords.latitude
+					}
+				)
+			})
+		}
+	}, [viewport]);
+
+
 
 	return (
 		<>
