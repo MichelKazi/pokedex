@@ -32,9 +32,8 @@ export class Map extends Component {
       position: 'absolute',
       left: '4.65%',
       top: '3.95%'
-
-
     }
+
     //binding the this keyword
     this.locate = this.locate.bind(this)
     this.pokemonHandler = this.pokemonHandler.bind(this)

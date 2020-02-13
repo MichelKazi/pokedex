@@ -64,7 +64,7 @@ const Map = props => {
 				onViewportChange={(viewport) => setViewport(...viewport)} 
 			>	
 				{ /* New Card component belongs here */ }
-
+			
 			</ReactMapGL>
 		</>
 	)
