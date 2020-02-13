@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import ReactMapGL, {Marker} from 'react-map-gl'
-import PokeballMarker from './PokeballMarker.js'
+import ReactMapGL from 'react-map-gl'
 import '../styles/map.scss'
 require('dotenv').config()
 
@@ -18,6 +17,11 @@ const Map = props => {
 			minZoom: 10,
 			zoom: 10
 		})
+	const [labelShowing, setLabelShowing] = useState(false)
+	const [navigatorChecked, setNaviagtorChecked] = useState(false)
+
+	
+
 	return (
 		<>
 			<ReactMapGL className="map"
@@ -25,7 +29,11 @@ const Map = props => {
 				mapStyle="mapvox://styles/mapbox/dark-v10"
 				mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_KEY}
 				{...viewport}
-			/>	
+				onViewportChange={(viewport) => setViewport(...viewport)} 
+			>	
+				{ /* New Card component belongs here */ }
+
+			</ReactMapGL>
 		</>
 	)
 }
