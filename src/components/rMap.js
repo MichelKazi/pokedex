@@ -19,8 +19,11 @@ const Map = props => {
 		})
 	const [labelShowing, setLabelShowing] = useState(false)
 	const [navigatorChecked, setNaviagtorChecked] = useState(false)
+	const [locations, setLocations] = useState([])
+	const prevNavigatorChecked = usePrevious(navigatorChecked)
 
 	// Instead of having a locate function, just move its definition to useEffect
+	// Locate the user on first render
 	useEffect(() => {
 		if (!navigator){
 			setNaviagtorChecked(true)
@@ -38,6 +41,17 @@ const Map = props => {
 		}
 	}, [viewport]);
 
+	// Compare previous state using usePrevious hook
+	useEffect(()=>{
+		if (prevNavigatorChecked !== navigatorChecked) {
+			const randomLocations = Array(40).fill(0)
+				.map(() => ({
+					lat: viewport.latitude + ((Math.random() - 0.575) / 7.5),
+					lng: viewport.longitude + ((Math.random() - 0.5) / 7.5)
+				}))
+			setLocations(randomLocations)
+		}
+	}, [prevNavigatorChecked, navigatorChecked, viewport.latitude, viewport.longitude])
 
 
 	return (

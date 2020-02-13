@@ -24,7 +24,8 @@ export class Map extends Component {
       labelShowing: false,
       navigatorChecked: false,
       pokemon: null,
-      trainer: null
+      trainer: null,
+			locations: []
     };
 
     this.mapStyle = {
