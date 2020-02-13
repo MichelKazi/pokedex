@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { useState, Component } from 'react'
 import Pokemon from '../Pokemon'
 
-export class PokeballMarker extends Component {
+export class pokeballMarker extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -13,23 +13,31 @@ export class PokeballMarker extends Component {
 
 
   setPokemon() {
-    const p = this.state.pokemon ? () => Promise.resolve(this.state.pokemon) : _ => {
+  }
+
+}
+
+const PokeballMarker = props => {
+
+	const resolvePokemon = () => {
+
+    const p = props.pokemon ? () => Promise.resolve(props.pokemon) : _ => {
       const fetchedPokemon = new Pokemon();
       return fetchedPokemon.randomQuery().then(pokemon => {this.setState({ pokemon }); return pokemon})
     }
 
     p().then(pokemon => {
-      this.props.pokemonHandler(pokemon)
+      props.setPokemon(pokemon)
     })
-  }
+	}
 
-  render() {
-    return (
-      <div onClick={this.setPokemon} style={{ cursor: 'pointer' }}>
-        <img src="https://image.flaticon.com/icons/png/512/188/188918.png" width="24" alt="pokeball" />
-      </div>
-    )
-  }
+	return (
+		<div 
+			onClick={resolvePokemon} 
+			style={{ cursor: 'pointer' }}>
+			<img src="https://image.flaticon.com/icons/png/512/188/188918.png" width="24" alt="pokeball" />
+		</div>
+	)
 }
 
 export default PokeballMarker

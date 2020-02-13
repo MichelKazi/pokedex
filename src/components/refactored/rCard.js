@@ -53,7 +53,7 @@ const Game = props => {
 					offsetTop={-10} 
 					style={{ zIndex: 21 }} 
 					captureClick={false}>
-					<PokeballMarker setPokemon={setPokemon} />
+					<PokeballMarker pokemon={pokemon} setPokemon={setPokemon} />
 				</Marker>
 			))}
 
