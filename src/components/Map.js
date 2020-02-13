@@ -98,7 +98,8 @@ export class Map extends Component {
     return (
       <div>
         <ReactMapGL className="map" captureDoubleClick={false} mapStyle="mapbox://styles/mapbox/dark-v10"  style={this.mapStyle}
-          mapboxApiAccessToken={'pk.eyJ1IjoibWthemkiLCJhIjoiY2szNm42Y214MDM5djNjcnozcmFseGplaiJ9.romUGZKRAwbaprnN_LrRiw'}
+										mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_KEY}
+
           {...this.state.viewport}
           
           onViewportChange={(viewport) => this.setState({ viewport })}
