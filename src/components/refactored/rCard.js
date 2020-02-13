@@ -9,13 +9,6 @@ import PokemonCard from './PokemonCard.js'
 import PokeballMarker from './PokeballMarker.js'
 import { Marker } from 'react-map-gl'
 
-const bulbasaur = new Pokemon()
-const charmander = new Pokemon()
-const squirtle = new Pokemon()
-bulbasaur.queryData(1)
-charmander.queryData(4)
-squirtle.queryData(7)
-const starters = [charmander, bulbasaur, squirtle]
 
 const Game = props => {
 	const [trainer, setTrainer] = useState(null)
@@ -68,7 +61,6 @@ const Game = props => {
 				{!trainer && 
 					<Welcome 
 						style={welcomeStyle}
-						starters={starters}
 						initTrainer={initTrainer}
 					/>	
 				}
