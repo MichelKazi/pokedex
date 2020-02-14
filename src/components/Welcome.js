@@ -1,70 +1,66 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Pokemon from '../Pokemon';
 import '../styles/welcome.scss'
 import randomColor from 'randomcolor'
 
+const bulbasaur = new Pokemon()
+const charmander = new Pokemon()
+const squirtle = new Pokemon()
+bulbasaur.queryData(1)
+charmander.queryData(4)
+squirtle.queryData(7)
+const starters = [charmander, bulbasaur, squirtle]
 const color = randomColor({hue: 'pink' , luminosity: 'dark'})
-export class Welcome extends Component {
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            name: null,
-            showStarters: false,
-            pokemon: null
-        }
-        this.setTrainer=this.setTrainer.bind(this)
-        this.handleName=this.handleName.bind(this)
-        this.setStarter=this.setStarter.bind(this)
-    }
 
-    componentDidMount(){
-        this.setState({starters: this.props.starters})
-    }
-    
-    setTrainer(){
-            if(this.state.pokemon)
-                this.props.initTrainer(this.state.name, this.state.pokemon)
-    }
+const Welcome = (props) => {
 
-    handleName(e){
-        if (e.charCode === 13) {
-            this.setState({showStarters: true})
-            if (this.state.pokemon)
-                this.props.initTrainer(this.state.name, this.state.pokemon)
-        }
+	const [name, setName] = useState(null)	
+	const [showStarters, setShowStarters] = useState(false)
+
+	const handleName = (e) => {
+		if (e.charCode === 13) {
+			setShowStarters(true)
 		}
-
-	setStarter(pokemon){
-		this.setState({ pokemon })
-		this.setTrainer()
 	}
 
-
-	render() {
-		return (
-			<div style={ {backgroundColor: color} } id="welcome">
-				<h2>Pokedex</h2>
-				<img height="200" src="https://thumbs.gfycat.com/MarriedJampackedDorking-max-1mb.gif" alt=""></img>
-				{this.state.showStarters && 
-				< >
-					<h3 id="message" >Please select a starter pokemon</h3>
-					<div id="starters" >   
-						{this.props.starters.map((pokemon, i) => (
-							<div key={i++} className="starters">
-								<img id={pokemon.name} onClick={() => { this.setState({ pokemon }); this.setTrainer() }} src={pokemon.spriteURL} alt=""></img>
-							</div>
-						))}
-					</div>
-				</>}
-				<div id="name">
-					{!this.state.showStarters && <input id='name-box' placeholder="Enter your name" onKeyPress={this.handleName} onChange={(e) => this.setState({ name: e.target.value })} />}
+	return (
+		<div style={ {backgroundColor: color} } id="welcome">
+			<h2>Pokedex</h2>
+			<img 
+				height="200" 
+				src="https://thumbs.gfycat.com/MarriedJampackedDorking-max-1mb.gif" 
+				alt=""
+			/>
+			{showStarters && 
+			<>
+				<h3 id="message" >Please select a starter pokemon</h3>
+				<div id="starters" >   
+					{starters.map((pokemon, i) => (
+						<div 
+							key={i} 
+							className="starters">
+							<img 
+								id={pokemon.name} 
+								onClick={() => { props.initTrainer(name, pokemon) }} 
+								src={pokemon.spriteURL} 
+								alt={pokemon.name}
+							/>
+						</div>
+					))}
 				</div>
+			</>}
+
+			<div id="name">
+				{!showStarters && 
+				<input 
+					id='name-box' placeholder="Enter your name" 
+					onKeyPress={handleName} 
+					onChange={(e) => setName(e.target.value)} />
+				}
 			</div>
-		)
-	}
-}
+		</div>
+	)
 
-
+} 
 
 export default Welcome
